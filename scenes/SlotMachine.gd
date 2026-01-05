@@ -152,12 +152,6 @@ func play_once_bigWin_Ani():
 	bigWin_Ani.play()
 	big_win_sound.play()
 	big_win_coin_sound.play()
-	
-func play_segment(start_sec: float, duration: float):
-	spin_sound.play(start_sec)
-
-	await get_tree().create_timer(duration).timeout
-	spin_sound.stop()
 
 func _ready():
 	# BGM
@@ -211,7 +205,7 @@ func start() -> void:
 		# 旋轉所有轉軸
 		for reel in reels:
 			_spin_reel(reel)
-			play_segment(0.1,6)
+			spin_sound.play(0.1)
 			# 稍後再旋轉下一個轉軸
 			if reel_delay > 0:
 				await get_tree().create_timer(reel_delay).timeout
@@ -225,15 +219,12 @@ func stop():
 	runs_stopped = current_runs()
 	total_runs = runs_stopped + tiles_per_reel
 
-# 問題動畫尚未結束就將陣列歸零重置
 # 當動畫停止時呼叫
 func _stop() -> void:
 	for reel in reels:
-		spin_sound.stop()
 		tiles_moved_per_reel[reel] = 0
 	state = State.OFF
 	emit_signal("stopped")
-	play_once_bigWin_Ani()
 
 # 開始移動指定轉軸上的所有瓦片
 func _spin_reel(reel :int) -> void:
@@ -278,8 +269,8 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 		stop_sound.play()
 		await tile.get_node("Animations").animation_finished
 		# 當最後一個轉軸停止時，整台機器停止
-		print(reel_runs)
-		print(reel)
+		if reel == 2:
+			spin_sound.stop()
 		if reel == reels - 1:
 			_stop()
 
@@ -291,15 +282,96 @@ func current_runs(reel_idex := 0) -> int:
 
 func _randomTexture() -> Texture2D:
 	return pictures[randi() % pictures.size()]
-	
+
 # 取得結果
 func _get_result() -> void:
+	var tiles: Array = []
+
+	#tiles = [
+		#[ 0,2,1,3 ],
+		#[ 0,1,1,3 ],
+		#[ 1,2,2,3 ],
+		#[ 0,2,2,3 ],
+		#[ 0,2,3,2 ],
+	#]
+	
+	tiles = _generate_tiles()
+	print(check_vertical_3_in_row(tiles))
+	print(check_all_diagonals(tiles))
+	
 	result = {
-		"tiles": [
-			[ 1,1,1,1 ],
-			[ 1,1,1,1 ],
-			[ 2,2,2,2 ],
-			[ 3,3,3,3 ],
-			[ 4,4,4,4 ],
-		]
+		"tiles": tiles
 	}
+
+# 隨機值
+func _generate_tiles() -> Array:
+	var tiles: Array = []
+
+	for i in range(5): # 5 列
+		var row: Array = []
+		for j in range(4): # 每列 4 個
+			row.append(randi_range(0, 13))
+		tiles.append(row)
+	return tiles
+	
+# 判斷直線
+func check_vertical_3_in_row(tiles: Array) -> Array:
+	var wins: Array = []
+	var rows: int = tiles.size()
+	var cols: int = tiles[0].size()
+
+	for col in range(cols):
+		for row in range(rows - 2):
+			var v: int = tiles[row][col]
+			if tiles[row + 1][col] == v and tiles[row + 2][col] == v:
+				wins.append({
+					"col": col,
+					"start_row": row,
+					"symbol": v
+				})
+	return wins
+	
+# 判斷斜線向下↘
+func check_diagonal_down_right(tiles: Array) -> Array:
+	var wins: Array[Dictionary] = []
+	var rows: int = tiles.size()
+	var cols: int = tiles[0].size()
+
+	for row in range(rows - 2):
+		for col in range(cols - 2):
+			var v: int = tiles[row][col]
+			if tiles[row + 1][col + 1] == v and tiles[row + 2][col + 2] == v:
+				wins.append({
+					"type": "↘",
+					"start_row": row,
+					"start_col": col,
+					"symbol": v
+				})
+
+	return wins
+	
+# 判斷斜線向上 ↗
+func check_diagonal_up_right(tiles: Array) -> Array:
+	var wins: Array[Dictionary] = []
+	var rows: int = tiles.size()
+	var cols: int = tiles[0].size()
+
+	for row in range(2, rows):
+		for col in range(cols - 2):
+			var v: int = tiles[row][col]
+			if tiles[row - 1][col + 1] == v and tiles[row - 2][col + 2] == v:
+				wins.append({
+					"type": "↗",
+					"start_row": row,
+					"start_col": col,
+					"symbol": v
+				})
+
+	return wins
+	
+# 檢查所有斜線
+func check_all_diagonals(tiles: Array) -> Array:
+	var wins := []
+	wins += check_diagonal_down_right(tiles)
+	wins += check_diagonal_up_right(tiles)
+	return wins

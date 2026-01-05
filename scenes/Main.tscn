@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://b1ya8l3kmc7t6" path="res://scenes/SlotMachine.gd" id="1"]
 [ext_resource type="Script" uid="uid://d1e1e3qov0rd0" path="res://scenes/Main.gd" id="3"]
 [ext_resource type="Script" uid="uid://c8xb1l3valssx" path="res://scenes/CombatBoard.gd" id="3_0bbpv"]
-[ext_resource type="AudioStream" uid="uid://cs8nh2kjycql5" path="res://sound/spin_metal_sound.wav" id="4_euk7l"]
-[ext_resource type="AudioStream" uid="uid://lm3jj2ke00yh" path="res://sound/spin_stop_heavy_click.wav" id="6_c01mt"]
 [ext_resource type="AudioStream" uid="uid://bw1h6epmut0nc" path="res://sound/coin_hop_carousel.mp3" id="6_nxtc6"]
 [ext_resource type="AudioStream" uid="uid://bbathi01hekth" path="res://sound/win_sound/BIG_WIN_Well_played.mp3" id="7_q8u5g"]
 [ext_resource type="AudioStream" uid="uid://bk5ywt1tvrcjo" path="res://sound/win_sound/JACKPOT_All_in.mp3" id="8_lhr70"]
@@ -250,7 +248,9 @@
 [ext_resource type="Texture2D" uid="uid://bib30r2l6s8dj" path="res://win/big_win/coin_treasure.png" id="247_std7w"]
 [ext_resource type="Script" uid="uid://bbips6j88okii" path="res://scenes/big_win_coin.gd" id="248_bfh1w"]
 [ext_resource type="Texture2D" uid="uid://c15ax1x6jxh1y" path="res://win/trump_point/frame_0333.png" id="248_vcrjg"]
+[ext_resource type="AudioStream" uid="uid://b4utxqua0v2pa" path="res://sound/kenney_casino-audio/Audio/card-shuffle.ogg" id="249_bfh1w"]
 [ext_resource type="Texture2D" uid="uid://bdqmaet6sr21o" path="res://win/trump_point/frame_0334.png" id="249_ty65q"]
+[ext_resource type="AudioStream" uid="uid://dlf73y8af38wg" path="res://sound/kenney_casino-audio/Audio/card-place-1.ogg" id="250_bfh1w"]
 [ext_resource type="Texture2D" uid="uid://1rale6nrofv6" path="res://win/trump_point/frame_0335.png" id="250_pnmop"]
 [ext_resource type="Texture2D" uid="uid://ctmu2iavahyxu" path="res://win/trump_point/frame_0336.png" id="251_2avv3"]
 [ext_resource type="Texture2D" uid="uid://ri6h1p44gk32" path="res://win/big_win/big_win_coin.png" id="252_euk7l"]
@@ -1079,14 +1079,13 @@ texture = ExtResource("252_euk7l")
 script = ExtResource("248_bfh1w")
 
 [node name="SpinSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_euk7l")
-volume_db = -3.0
-pitch_scale = 0.72
+stream = ExtResource("249_bfh1w")
+volume_db = 1.0
 mix_target = 2
 
 [node name="StopSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_c01mt")
-volume_db = -4.0
+stream = ExtResource("250_bfh1w")
+volume_db = 1.0
 
 [node name="BGMSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nxtc6")
