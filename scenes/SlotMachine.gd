@@ -1,4 +1,5 @@
 extends Node2D
+class_name SlotMachine
 
 const SlotTile := preload("res://scenes/SlotTile.tscn")
 const Player := preload("res://scenes/Player.tscn")

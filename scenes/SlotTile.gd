@@ -1,5 +1,6 @@
 extends Node2D
 class_name SlotTile
+
 var _size : Vector2
 var _speed : float
 
