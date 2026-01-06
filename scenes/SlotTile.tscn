@@ -49,6 +49,7 @@ texture = ExtResource("2_xxgdn")
 centered = false
 
 [node name="Label" type="Label" parent="Sprite"]
+visible = false
 offset_left = 12.0
 offset_top = 3.64009
 offset_right = 53.0
