@@ -113,6 +113,9 @@ var runs_stopped := 0
 # 儲存與實際執行方式無關的總移動次數
 var total_runs : int
 
+# 儲存連線位置
+var wins := []
+
 # 聲音
 @onready var spin_sound = $"../../../SpinSound"
 @onready var stop_sound = $"../../../StopSound"
@@ -251,6 +254,7 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 	var reel_runs := current_runs(reel)
 	var current_idx = total_runs - reel_runs
 	
+	
 	# 若瓦片移出視窗，則將其移到最上方的不可見列
 	if (tile.position.y > grid_pos[0][-1].y):
 		tile.position.y = grid_pos[0][0].y
@@ -287,17 +291,19 @@ func _randomTexture() -> Texture2D:
 func _get_result() -> void:
 	var tiles: Array = []
 
-	#tiles = [
-		#[ 0,2,1,3 ],
-		#[ 0,1,1,3 ],
-		#[ 1,2,2,3 ],
-		#[ 0,2,2,3 ],
-		#[ 0,2,3,2 ],
-	#]
+	tiles = [
+		[ 0,0,1,3 ],
+		[ 0,3,9,1 ],
+		[ 1,8,3,9 ],
+		[ 3,2,6,3 ],
+		[ 3,2,6,3 ],
+	]
 	
-	tiles = _generate_tiles()
-	print(check_vertical_3_in_row(tiles))
-	print(check_all_diagonals(tiles))
+	#tiles = _generate_tiles()
+	
+	# 印出所有連線
+	check_all_line(tiles)
+	print(get_vertical_win_positions(wins))
 	
 	result = {
 		"tiles": tiles
@@ -325,7 +331,8 @@ func check_vertical_3_in_row(tiles: Array) -> Array:
 			var v: int = tiles[row][col]
 			if tiles[row + 1][col] == v and tiles[row + 2][col] == v:
 				wins.append({
-					"col": col,
+					"type": "→",
+					"start_col": col,
 					"start_row": row,
 					"symbol": v
 				})
@@ -369,9 +376,29 @@ func check_diagonal_up_right(tiles: Array) -> Array:
 
 	return wins
 	
-# 檢查所有斜線
-func check_all_diagonals(tiles: Array) -> Array:
-	var wins := []
+# 檢查所有線
+func check_all_line(tiles: Array) -> Array:
+	# 初始化
+	wins = []
+	wins += check_vertical_3_in_row(tiles)
 	wins += check_diagonal_down_right(tiles)
 	wins += check_diagonal_up_right(tiles)
 	return wins
+
+# 命中座標集合
+func get_vertical_win_positions(wins: Array) -> Array:
+	var positions: Array = []
+	for win in wins:
+		for offset in range(3):
+			positions.append({
+				"row": win.start_row + offset,
+				"col": win.start_col
+			})
+	return positions
+
+# 命中座標
+func is_win_tile(row: int, col: int, wins: Array) -> bool:
+	for p in wins:
+		if p.start_row == row and p.start_col == col:
+			return true
+	return false

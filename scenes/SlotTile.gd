@@ -3,11 +3,18 @@ class_name SlotTile
 
 var _size : Vector2
 var _speed : float
+@onready var _label = $Sprite/Label
 
 signal finished
 
 func _ready() -> void:
 	pass
+	
+func show_text():
+	_label.visible = true
+	
+func hide_text():
+	_label.visible = false
 	
 func set_texture(tex):
 	$Sprite.texture = tex
