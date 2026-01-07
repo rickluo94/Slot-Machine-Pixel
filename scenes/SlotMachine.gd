@@ -206,10 +206,11 @@ func start() -> void:
 		# 旋轉所有轉軸
 		for reel in reels:
 			_spin_reel(reel)
-			spin_sound.play(0.1)
 			# 稍後再旋轉下一個轉軸
 			if reel_delay > 0:
+				spin_sound.play(0.1)
 				await get_tree().create_timer(reel_delay).timeout
+				spin_sound.stop()
 	
 # 在運行時間結束前強制停止機器
 func stop():
@@ -270,8 +271,6 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 		stop_sound.play()
 		await tile.get_node("Animations").animation_finished
 		# 當最後一個轉軸停止時，整台機器停止
-		if reel == 2:
-			spin_sound.stop()
 		if reel == reels - 1:
 			_stop()
 

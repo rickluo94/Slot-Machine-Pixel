@@ -11,7 +11,7 @@ func _ready():
 
 func monster_draw():
 	monster.play("draw")
-	await get_tree().create_timer(1.8).timeout
+	await get_tree().create_timer(1.6).timeout
 	monster.play("laugh")
 	
 func _on_Roll_button_down():

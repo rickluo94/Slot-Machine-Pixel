@@ -899,7 +899,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"draw",
-"speed": 50.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1826,7 +1826,8 @@ scale = Vector2(1.5613533, 1.5613531)
 sprite_frames = SubResource("SpriteFrames_hohh6")
 animation = &"draw"
 autoplay = "laugh"
-frame_progress = 0.9089081
+frame = 20
+frame_progress = 0.23000324
 
 [node name="ColorRectTop" type="ColorRect" parent="."]
 visible = false
