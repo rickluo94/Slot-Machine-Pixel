@@ -899,7 +899,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"draw",
-"speed": 53.0
+"speed": 50.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1821,13 +1821,12 @@ render_target_update_mode = 4
 script = ExtResource("1")
 
 [node name="Monster" type="AnimatedSprite2D" parent="."]
-position = Vector2(1589.8909, 329.35065)
+position = Vector2(1589.891, 328.35065)
 scale = Vector2(1.5613533, 1.5613531)
 sprite_frames = SubResource("SpriteFrames_hohh6")
 animation = &"draw"
 autoplay = "laugh"
-frame = 53
-frame_progress = 1.0
+frame_progress = 0.9089081
 
 [node name="ColorRectTop" type="ColorRect" parent="."]
 visible = false
