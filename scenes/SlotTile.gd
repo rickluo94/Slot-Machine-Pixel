@@ -47,6 +47,9 @@ func spin_up():
   
 func spin_down():
 	$Animations.play('SPIN_DOWN')
+
+func spin_scale():
+	$Animations.play('SPIN_SCALE')
 	
 func _on_finished():
 	get_parent()._on_tile_moved(self, self)
