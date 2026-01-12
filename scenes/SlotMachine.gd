@@ -196,7 +196,8 @@ func _add_tile(col :int, row :int) -> void:
 	tile.set_size(tile_size)
 	tile.position = grid_pos[col][row]
 	add_child(tile)
-	print("index:",tiles.size()," position:",grid_pos[col][row])
+	tile.show_text()
+	print("{index: ",tiles.size(), ", col: %d ,row: %d}" % [col, row])
 
 # 回傳指定格子位置的瓦片
 func get_tile(col :int, row :int) -> SlotTile:
@@ -231,6 +232,7 @@ func stop():
 	# 增加移動次數以更新瓦片為結果圖片
 	runs_stopped = current_runs()
 	total_runs = runs_stopped + tiles_per_reel
+	print(" total_runs: ",total_runs);
 	
 # 當動畫停止時呼叫
 func _stop() -> void:
@@ -239,7 +241,7 @@ func _stop() -> void:
 	state = State.OFF
 	emit_signal("stopped")
 	_count_stopped()
-
+	
 # 開始移動指定轉軸上的所有瓦片
 func _spin_reel(reel :int) -> void:
 	# 移動該轉軸上的每一個瓦片
@@ -336,7 +338,7 @@ func _generate_tiles() -> Array:
 	
 # 判斷直線
 func check_vertical_linked_tiles(tiles: Array) -> Array:
-	var hits: Array[Dictionary] = []
+	var hits:= []
 	var rows: int = tiles.size()
 	var cols: int = tiles[0].size()
 	for col in range(cols):
@@ -353,8 +355,8 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 					for i in range(run_length):
 						hits.append({
 							"type": "→",
-							"col": col,
-							"row": run_start + i,
+							"col": run_start + i,
+							"row": col,
 							"symbol": current_symbol
 						})
 				# 開新段
@@ -366,15 +368,15 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 			for i in range(run_length):
 				hits.append({
 					"type": "→",
-					"col": col,
-					"row": run_start + i,
+					"col": run_start + i,
+					"row": col,
 					"symbol": current_symbol
 				})
 	return hits
 	
 # 判斷斜線向下↘
 func check_diagonal_down_right(tiles: Array) -> Array:
-	var hits: Array[Dictionary] = []
+	var hits:= []
 	var rows: int = tiles.size()
 	var cols: int = tiles[0].size()
 	
@@ -384,8 +386,8 @@ func check_diagonal_down_right(tiles: Array) -> Array:
 			if tiles[row + 1][col + 1] == v and tiles[row + 2][col + 2] == v:
 				hits.append({
 					"type": "↘",
-					"row": row,
-					"col": col,
+					"col": row,
+					"row": col,
 					"symbol": v
 				})
 				
@@ -393,7 +395,7 @@ func check_diagonal_down_right(tiles: Array) -> Array:
 	
 # 判斷斜線向上 ↗
 func check_diagonal_up_right(tiles: Array) -> Array:
-	var hits: Array[Dictionary] = []
+	var hits:= []
 	var rows: int = tiles.size()
 	var cols: int = tiles[0].size()
 	
@@ -403,8 +405,8 @@ func check_diagonal_up_right(tiles: Array) -> Array:
 			if tiles[row - 1][col + 1] == v and tiles[row - 2][col + 2] == v:
 				hits.append({
 					"type": "↗",
-					"row": row,
-					"col": col,
+					"col": row,
+					"row": col,
 					"symbol": v
 				})
 				
@@ -419,16 +421,8 @@ func check_all_line(tiles: Array) -> Array:
 	wins += check_diagonal_up_right(tiles)
 	return wins
 	
-# 所有命中座標瓦片起點
-func build_win_tile_start(row: int, col: int, wins: Array) -> bool:
-	for p in wins:
-		if p.row == row and p.col == col:
-			#print("WIN tile → reel:", row, " p.start_row:", p.start_row, " current_idx:", col, " p.start_col:", p.start_col, " true")
-			return true
-	return false
-	
 # 判斷當前是否命中內
-func is_win_tile(row: int, col: int, wins: Array) -> bool:
+func is_win_tile(col: int, row: int, wins: Array) -> bool:
 	for p in wins:
 		if p.row == row and p.col == col:
 			return true
@@ -437,6 +431,8 @@ func is_win_tile(row: int, col: int, wins: Array) -> bool:
 # 播放命中瓦片動畫
 func win_tile_animation():
 	for win in wins:
-		print(" win.row:", win.row, " win.col:", win.col, " size:",tiles.size())
-		get_tile(win.row, win.col).spin_scale()
-			
+		print(" win.col:", win.col, " win.row:", win.row, " size:",tiles.size())
+		for tile in tiles:
+			if tile.position == grid_pos[win.col][win.row]:
+				tile.spin_scale()
+		
