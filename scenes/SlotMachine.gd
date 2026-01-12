@@ -305,17 +305,30 @@ func _randomTexture() -> Texture2D:
 
 # 取得結果
 func _get_result() -> void:
+	
+	# 層級 1：先決定「這一把會不會中」
+	var hit_rate := 0.35 # 35% 命中機率
+	var is_win := randf() < hit_rate # 贏或輸
 	var prepare_tiles: Array = []
 	
-	#tiles = [
-		#[ 0,1,9,2],
-		#[ 2,0,6,1],
-		#[ 9,6,0,1],
-		#[ 2,6,6,1],
-		#[ 0,6,9,2],
-	#]
+	# 層級 2：決定「中哪一種符號、哪一條線」
+	const SYMBOL_WEIGHT := {
+		0: 20,
+		1: 90,
+		2: 80,
+		3: 70,
+		4: 60,
+		5: 50,
+		6: 40,
+		7: 30,
+		8: 30,
+		9: 30,
+		10: 20,
+		11: 20,
+		12: 20
+	}
 	
-	prepare_tiles = _generate_tiles()
+	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT)
 	
 	# 印出所有連線
 	check_all_line(prepare_tiles)
@@ -334,6 +347,16 @@ func _generate_tiles() -> Array:
 		for j in range(4): # 每列 4 個
 			row.append(randi_range(0, 12))
 		prepare_tiles.append(row)
+	return prepare_tiles
+	
+# 權重分佈版本
+func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary) -> Array:
+	var prepare_tiles := []
+	for row in range(5):
+		var line := []
+		for col in range(4):
+			line.append(pick_weighted(SYMBOL_WEIGHT))
+		prepare_tiles.append(line)
 	return prepare_tiles
 	
 # 判斷直線
@@ -437,4 +460,15 @@ func win_tile_animation():
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
 				tile.spin_scale()
-		
+	
+func pick_weighted(weight_map: Dictionary) -> int:
+	var total_weight := 0
+	for w in weight_map.values():
+		total_weight += w
+	var roll := randi_range(1, total_weight)
+	var acc := 0
+	for key in weight_map.keys():
+		acc += weight_map[key]
+		if roll <= acc:
+			return key
+	return weight_map.keys()[0]
