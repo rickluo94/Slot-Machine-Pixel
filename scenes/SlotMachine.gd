@@ -305,7 +305,7 @@ func _randomTexture() -> Texture2D:
 
 # 取得結果
 func _get_result() -> void:
-	var tiles: Array = []
+	var prepare_tiles: Array = []
 	
 	#tiles = [
 		#[ 0,1,9,2],
@@ -315,26 +315,26 @@ func _get_result() -> void:
 		#[ 0,6,9,2],
 	#]
 	
-	tiles = _generate_tiles()
+	prepare_tiles = _generate_tiles()
 	
 	# 印出所有連線
-	check_all_line(tiles)
+	check_all_line(prepare_tiles)
 	print(wins)
 	
 	result = {
-		"tiles": tiles
+		"tiles": prepare_tiles
 	}
 
 # 隨機值
 func _generate_tiles() -> Array:
-	var tiles: Array = []
+	var prepare_tiles: Array = []
 	
 	for i in range(5): # 5 列
 		var row: Array = []
 		for j in range(4): # 每列 4 個
 			row.append(randi_range(0, 12))
-		tiles.append(row)
-	return tiles
+		prepare_tiles.append(row)
+	return prepare_tiles
 	
 # 判斷直線
 func check_vertical_linked_tiles(tiles: Array) -> Array:
