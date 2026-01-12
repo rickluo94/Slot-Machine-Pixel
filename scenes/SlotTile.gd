@@ -50,6 +50,9 @@ func spin_down():
 
 func spin_scale():
 	$Animations.play('SPIN_SCALE')
+
+func spin_scale_seek():
+	$Animations.seek(3.0,true)
 	
 func _on_finished():
 	get_parent()._on_tile_moved(self, self)

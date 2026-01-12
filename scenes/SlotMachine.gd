@@ -204,10 +204,13 @@ func get_tile(col :int, row :int) -> SlotTile:
 
 func start() -> void:
 	_on_anim_finished()
-  # 僅在尚未運作時才開始
+	# 僅在尚未運作時才開始
 	if state == State.OFF:
 		state = State.ON
 		total_runs = expected_runs
+		# 停止所有瓦片動畫
+		for tile in tiles:
+			tile.spin_scale_seek()
 		# 向伺服器請求結果
 		_get_result()
 		print(result)

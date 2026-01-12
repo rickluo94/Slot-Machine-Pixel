@@ -67,21 +67,6 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 
-[sub_resource type="Animation" id="2"]
-resource_name = "SPIN_UP"
-length = 0.7
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.140083, -0.2, 0, 0.2, 0, 0, -0.1, -200, 0.1, 200),
-"times": PackedFloat32Array(0, 0.7)
-}
-
 [sub_resource type="Animation" id="Animation_xxgdn"]
 resource_name = "SPIN_SCALE"
 length = 3.0
@@ -118,6 +103,21 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(2, 2, 0, 0, 0, 0, 0),
 "points": PackedFloat32Array(3.1, 0, 0, 0.083333336, 0.033333343, 3.3, -0.083333336, -0.049999993, 0, 0, 3.1, 0, 0, 0.083333336, 0.033333343, 3.3, -0.083333336, -0.049999993, 0, 0, 3.1, 0, 0, 0.083333336, 0.033333343, 3.3, -0.083333336, -0.049999993, 0, 0, 3.1, -0.083333336, 0.033333343, 0, 0),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3)
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "SPIN_UP"
+length = 0.7
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.140083, -0.2, 0, 0.2, 0, 0, -0.1, -200, 0.1, 200),
+"times": PackedFloat32Array(0, 0.7)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxgdn"]
