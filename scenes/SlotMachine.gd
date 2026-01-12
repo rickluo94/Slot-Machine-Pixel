@@ -308,9 +308,9 @@ func _get_result() -> void:
 	var tiles: Array = []
 	
 	tiles = [
-		[ 0,1,0,2],
+		[ 0,1,9,2],
 		[ 2,0,6,1],
-		[ 0,6,9,1],
+		[ 9,6,0,1],
 		[ 2,6,6,1],
 		[ 0,6,9,2],
 	]
@@ -374,25 +374,6 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 				})
 	return hits
 	
-# 判斷斜線向下↘
-func check_diagonal_down_right(tiles: Array) -> Array:
-	var hits:= []
-	var rows: int = tiles.size()
-	var cols: int = tiles[0].size()
-	
-	for row in range(rows - 2):
-		for col in range(cols - 2):
-			var v: int = tiles[row][col]
-			if tiles[row + 1][col + 1] == v and tiles[row + 2][col + 2] == v:
-				hits.append({
-					"type": "↘",
-					"col": row,
-					"row": col,
-					"symbol": v
-				})
-				
-	return hits
-	
 # 判斷斜線向上 ↗
 func check_diagonal_up_right(tiles: Array) -> Array:
 	var hits: Array = []
@@ -410,6 +391,27 @@ func check_diagonal_up_right(tiles: Array) -> Array:
 						"col": col + i,
 						"symbol": v
 					})
+	return hits
+	
+# 判斷斜線向下
+func check_diagonal_down_right(tiles: Array) -> Array:
+	var hits: Array = []
+	var rows: int = tiles.size()
+	var cols: int = tiles[0].size()
+	
+	for row in range(rows - 2):
+		for col in range(cols - 2):
+			var v: int = tiles[row][col]
+			
+			if tiles[row + 1][col + 1] == v and tiles[row + 2][col + 2] == v:
+				for i in range(3):
+					hits.append({
+						"type": "↘",
+						"row": row + i,
+						"col": col + i,
+						"symbol": v
+					})
+					
 	return hits
 	
 # 檢查所有線
