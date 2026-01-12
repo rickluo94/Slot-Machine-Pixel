@@ -307,15 +307,15 @@ func _randomTexture() -> Texture2D:
 func _get_result() -> void:
 	var tiles: Array = []
 	
-	tiles = [
-		[ 0,1,9,2],
-		[ 2,0,6,1],
-		[ 9,6,0,1],
-		[ 2,6,6,1],
-		[ 0,6,9,2],
-	]
+	#tiles = [
+		#[ 0,1,9,2],
+		#[ 2,0,6,1],
+		#[ 9,6,0,1],
+		#[ 2,6,6,1],
+		#[ 0,6,9,2],
+	#]
 	
-	#tiles = _generate_tiles()
+	tiles = _generate_tiles()
 	
 	# 印出所有連線
 	check_all_line(tiles)
@@ -332,7 +332,7 @@ func _generate_tiles() -> Array:
 	for i in range(5): # 5 列
 		var row: Array = []
 		for j in range(4): # 每列 4 個
-			row.append(randi_range(0, 13))
+			row.append(randi_range(0, 12))
 		tiles.append(row)
 	return tiles
 	
@@ -375,52 +375,52 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 	return hits
 	
 # 判斷斜線向上 ↗
-func check_diagonal_up_right(tiles: Array) -> Array:
-	var hits: Array = []
-	var rows: int = tiles.size()
-	var cols: int = tiles[0].size()
-	for row in range(2, rows):
-		for col in range(cols - 2):
-			var v: int = tiles[row][col]
-			if tiles[row - 1][col + 1] == v and tiles[row - 2][col + 2] == v:
-				# 展開成 3 個命中格子
-				for i in range(3):
-					hits.append({
-						"type": "↗",
-						"row": row - i,
-						"col": col + i,
-						"symbol": v
-					})
-	return hits
+#func check_diagonal_up_right(tiles: Array) -> Array:
+	#var hits: Array = []
+	#var rows: int = tiles.size()
+	#var cols: int = tiles[0].size()
+	#for row in range(2, rows):
+		#for col in range(cols - 2):
+			#var v: int = tiles[row][col]
+			#if tiles[row - 1][col + 1] == v and tiles[row - 2][col + 2] == v:
+				## 展開成 3 個命中格子
+				#for i in range(3):
+					#hits.append({
+						#"type": "↗",
+						#"row": row,
+						#"col": col + i,
+						#"symbol": v
+					#})
+	#return hits
 	
 # 判斷斜線向下
-func check_diagonal_down_right(tiles: Array) -> Array:
-	var hits: Array = []
-	var rows: int = tiles.size()
-	var cols: int = tiles[0].size()
-	
-	for row in range(rows - 2):
-		for col in range(cols - 2):
-			var v: int = tiles[row][col]
-			
-			if tiles[row + 1][col + 1] == v and tiles[row + 2][col + 2] == v:
-				for i in range(3):
-					hits.append({
-						"type": "↘",
-						"row": row + i,
-						"col": col + i,
-						"symbol": v
-					})
-					
-	return hits
+#func check_diagonal_down_right(tiles: Array) -> Array:
+	#var hits: Array = []
+	#var rows: int = tiles.size()
+	#var cols: int = tiles[0].size()
+	#
+	#for row in range(rows - 2):
+		#for col in range(cols - 2):
+			#var v: int = tiles[row][col]
+			#
+			#if tiles[row + 1][col + 1] == v and tiles[row + 2][col + 2] == v:
+				#for i in range(3):
+					#hits.append({
+						#"type": "↘",
+						#"row": row + i,
+						#"col": col + i,
+						#"symbol": v
+					#})
+					#
+	#return hits
 	
 # 檢查所有線
 func check_all_line(tiles: Array) -> Array:
 	# 初始化
 	wins = []
 	wins += check_vertical_linked_tiles(tiles)
-	wins += check_diagonal_down_right(tiles)
-	wins += check_diagonal_up_right(tiles)
+	#wins += check_diagonal_down_right(tiles)
+	#wins += check_diagonal_up_right(tiles)
 	return wins
 	
 # 判斷當前是否命中內
