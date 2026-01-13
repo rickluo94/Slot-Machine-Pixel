@@ -213,7 +213,7 @@ func start() -> void:
 		total_runs = expected_runs
 		# 停止所有瓦片動畫
 		for tile in tiles:
-			tile.spin_scale_seek()
+			tile.card_scale_seek()
 		# 向伺服器請求結果
 		_get_result()
 		print(result)
@@ -375,8 +375,15 @@ func _get_result() -> void:
 		52: 20,
 	}
 	
-	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT)
-	
+	#prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT)
+	prepare_tiles = [
+			[44, 5, 2, 8], 
+			[5, 49, 9, 3], 
+			[33, 5, 5, 16], 
+			[33, 9, 7, 25], 
+			[33, 0, 47, 12]
+		]
+		
 	# 印出所有連線
 	check_all_line(prepare_tiles)
 	print(wins)
@@ -506,7 +513,7 @@ func win_tile_animation():
 		print(" win.col:", win.col, " win.row:", win.row, " size:",tiles.size())
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
-				tile.spin_scale()
+				tile.card_fire()
 	
 func pick_weighted(weight_map: Dictionary) -> int:
 	var total_weight := 0

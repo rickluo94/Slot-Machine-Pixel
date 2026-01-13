@@ -50,19 +50,30 @@ func spin_up():
 func spin_down():
 	$Animations.play('SPIN_DOWN')
 
-func spin_scale():
+func card_scale():
 	$Animations.play('SPIN_SCALE')
-
-func spin_scale_seek():
+	
+func card_fire():
+	$Animations.play('CARD_FIRE')
+	
+func card_scale_seek():
 	$Animations.seek(3.0,true)
-
+	
 func set_foil_card_shader():
 	var shader := load("res://VFX/shaders/Balatro_Foil_card_effect.gdshader")
 	var mat := ShaderMaterial.new()
 	mat.shader = shader
 	# 設定 shader 參數
-	mat.set_shader_parameter("speed", 0.4)
-	mat.set_shader_parameter("offset", Vector2(randf() * 10.0, randf() * 10.0))
+	_sprite.material = mat
+	
+func set_fire_card_shader():
+	var shader := load("res://VFX/shaders/Balatro_Fire.gdshader")
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	var n := NoiseTexture2D.new()
+	n.noise = FastNoiseLite.new()
+	mat.set_shader_parameter("noise_tex", n)
+	# 設定 shader 參數
 	_sprite.material = mat
 	
 func reset_shader_empty():

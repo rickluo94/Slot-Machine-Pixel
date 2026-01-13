@@ -18,34 +18,31 @@ vec4 tri_color_mix(vec4 color1, vec4 color2, vec4 color3, float pos) {
 }
 
 void fragment() {
-    // Scale UVs to make the noise more visible
-    vec2 base_uv = UV * 1.0;
-    
-    // Create two layers of noise with different speeds
+    // 1️⃣ 取 Sprite 原本的貼圖
+    vec4 base_tex = texture(TEXTURE, UV);
+
+    // --- 以下是你原本的火焰計算 ---
+    vec2 base_uv = UV;
     vec2 shifted_uv1 = base_uv + TIME * fire_speed;
     vec2 shifted_uv2 = base_uv + TIME * fire_speed * 1.5;
-    
-    // Sample noise texture twice
+
     float fire_noise1 = texture(noise_tex, fract(shifted_uv1)).r;
     float fire_noise2 = texture(noise_tex, fract(shifted_uv2)).r;
-    
-    // Combine the noise samples
     float combined_noise = (fire_noise1 + fire_noise2) * 0.5;
-    
-    // Calculate fire shape
-    float noise = UV.y * (((UV.y + fire_aperture) * combined_noise - fire_aperture) * 75.0);
-    
-    // Add horizontal movement
-    noise += sin(UV.y * 10.0 + TIME * 2.0) * 0.1;
-    
-    // Calculate gradient position and mix three colors
-    float gradient_pos = clamp(noise * 0.08, 0.3, 2.0);
-	//vec4 smoth_mid_color = smoothstep(top_color, middle_color, vec4(1));
-    vec4 fire_color = tri_color_mix(bottom_color, middle_color, top_color, gradient_pos);
-    
-	
 
-    // Set final color and alpha
-    COLOR = fire_color;
-    COLOR.a = clamp(noise, 0.0, 1.0) * fire_alpha;
+    float noise = UV.y * (((UV.y + fire_aperture) * combined_noise - fire_aperture) * 75.0);
+    noise += sin(UV.y * 10.0 + TIME * 2.0) * 0.1;
+
+    float gradient_pos = clamp(noise * 0.08, 0.3, 1.0);
+    vec4 fire_color = tri_color_mix(bottom_color, middle_color, top_color, gradient_pos);
+
+    float fire_a = clamp(noise, 0.0, 1.0) * fire_alpha;
+
+    // 2️⃣ 疊加：原圖 + 火焰
+    vec4 final_color = mix(base_tex, fire_color, fire_a);
+
+    // 3️⃣ 保留原圖 alpha
+    final_color.a = base_tex.a;
+
+    COLOR = final_color;
 }
