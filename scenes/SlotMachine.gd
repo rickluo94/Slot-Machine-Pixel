@@ -352,7 +352,8 @@ func _get_result() -> void:
 			#[33, 9, 7, 25], 
 			#[33, 0, 47, 12]
 		#]
-		
+	
+	# 瓦片材質陣列
 	var format_tiles:=[]
 	for tile in prepare_tiles:
 		var format_line := []
