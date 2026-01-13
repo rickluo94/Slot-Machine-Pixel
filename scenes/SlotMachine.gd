@@ -318,80 +318,49 @@ func _get_result() -> void:
 	var is_win := randf() < hit_rate # 贏或輸
 	var prepare_tiles: Array = []
 	
-	# 層級 2：決定「中哪一種符號、哪一條線」
+	# 層級 2：決定「數字」
 	const SYMBOL_WEIGHT := {
-		0: 50,
-		1: 90,
-		2: 80,
-		3: 70,
-		4: 60,
-		5: 50,
+		0: 60,
+		1: 40,
+		2: 40,
+		3: 40,
+		4: 40,
+		5: 40,
 		6: 40,
-		7: 30,
-		8: 30,
-		9: 30,
-		10: 20,
-		11: 20,
-		12: 20,
-		13: 20,
-		14: 20,
-		15: 20,
-		16: 20,
-		17: 20,
-		18: 20,
-		19: 20,
-		20: 20,
-		21: 20,
-		22: 20,
-		23: 20,
-		24: 20,
-		25: 20,
-		26: 20,
-		27: 20,
-		28: 20,
-		29: 20,
-		30: 20,
-		31: 20,
-		32: 20,
-		33: 20,
-		34: 20,
-		35: 20,
-		36: 20,
-		37: 20,
-		38: 20,
-		39: 20,
-		40: 20,
-		41: 20,
-		42: 20,
-		43: 20,
-		44: 20,
-		45: 20,
-		46: 20,
-		47: 20,
-		48: 20,
-		49: 20,
-		50: 20,
-		51: 20,
-		52: 20,
+		7: 40,
+		8: 40,
+		9: 40,
+		10: 40,
+		11: 40,
+		12: 40,
+		13: 40
 	}
 	
-	#prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT)
-	prepare_tiles = [
-			[44, 5, 2, 8], 
-			[5, 49, 9, 3], 
-			[33, 5, 5, 16], 
-			[33, 9, 7, 25], 
-			[33, 0, 47, 12]
-		]
+	# 層級 3：決定「花色」
+	const SYMBOL_SUIT := {
+		1: 100,
+		2: 100,
+		3: 100,
+		4: 100,
+	}
+	
+	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT,SYMBOL_SUIT)
+	#prepare_tiles = [
+			#[44, 5, 2, 8], 
+			#[5, 49, 9, 3], 
+			#[33, 5, 5, 16], 
+			#[33, 9, 7, 25], 
+			#[33, 0, 47, 12]
+		#]
 		
-	# 印出所有連線
 	check_all_line(prepare_tiles)
+	# 印出所有連線
 	print(wins)
 	
 	result = {
 		"tiles": prepare_tiles
 	}
-
+	
 # 隨機值
 func _generate_tiles() -> Array:
 	var prepare_tiles: Array = []
@@ -403,13 +372,26 @@ func _generate_tiles() -> Array:
 		prepare_tiles.append(row)
 	return prepare_tiles
 	
+# 權重分佈取值
+func pick_weighted(weight_map: Dictionary) -> int:
+	var total_weight := 0
+	for w in weight_map.values():
+		total_weight += w
+	var roll := randi_range(1, total_weight)
+	var acc := 0
+	for key in weight_map.keys():
+		acc += weight_map[key]
+		if roll <= acc:
+			return key
+	return weight_map.keys()[0]
+	
 # 權重分佈版本
-func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary) -> Array:
+func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary,SYMBOL_SUIT:Dictionary) -> Array:
 	var prepare_tiles := []
 	for row in range(5):
 		var line := []
 		for col in range(4):
-			line.append(pick_weighted(SYMBOL_WEIGHT))
+			line.append(pick_weighted(SYMBOL_WEIGHT) * pick_weighted(SYMBOL_SUIT))
 		prepare_tiles.append(line)
 	return prepare_tiles
 	
@@ -514,15 +496,3 @@ func win_tile_animation():
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
 				tile.card_fire()
-	
-func pick_weighted(weight_map: Dictionary) -> int:
-	var total_weight := 0
-	for w in weight_map.values():
-		total_weight += w
-	var roll := randi_range(1, total_weight)
-	var acc := 0
-	for key in weight_map.keys():
-		acc += weight_map[key]
-		if roll <= acc:
-			return key
-	return weight_map.keys()[0]
