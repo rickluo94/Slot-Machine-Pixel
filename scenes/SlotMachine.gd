@@ -216,7 +216,7 @@ func start() -> void:
 			tile.card_scale_seek()
 		# 向伺服器請求結果
 		_get_result()
-		print(result)
+		print("Start Get Random :",result)
 		# 旋轉所有轉軸
 		for reel in reels:
 			_spin_reel(reel)
@@ -320,31 +320,31 @@ func _get_result() -> void:
 	
 	# 層級 2：決定「數字」
 	const SYMBOL_WEIGHT := {
-		0: 60,
-		1: 40,
-		2: 40,
-		3: 40,
-		4: 40,
-		5: 40,
-		6: 40,
-		7: 40,
-		8: 40,
-		9: 40,
-		10: 40,
-		11: 40,
-		12: 40,
-		13: 40
+		0: 30,
+		1: 70,
+		2: 70,
+		3: 70,
+		4: 70,
+		5: 70,
+		6: 70,
+		7: 70,
+		8: 70,
+		9: 70,
+		10: 70,
+		11: 70,
+		12: 70,
+		13: 70
 	}
 	
 	# 層級 3：決定「花色」
-	const SYMBOL_SUIT := {
+	const SYMBOL_SUIT_WEIGHT := {
 		1: 100,
 		2: 100,
 		3: 100,
 		4: 100,
 	}
 	
-	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT,SYMBOL_SUIT)
+	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT,SYMBOL_SUIT_WEIGHT)
 	#prepare_tiles = [
 			#[44, 5, 2, 8], 
 			#[5, 49, 9, 3], 
@@ -353,24 +353,28 @@ func _get_result() -> void:
 			#[33, 0, 47, 12]
 		#]
 		
-	check_all_line(prepare_tiles)
+	var format_tiles:=[]
+	for tile in prepare_tiles:
+		var format_line := []
+		for t in tile:
+			format_line.append(t.pic_index)
+		format_tiles.append(format_line)
+	
+	# 判斷數字
+	var symbol_tiles:=[]
+	for tile in prepare_tiles:
+		var symbol_line := []
+		for t in tile:
+			symbol_line.append(t.pic_index)
+		symbol_tiles.append(symbol_line)
+	# 判斷數字連線
+	check_all_line(symbol_tiles)
 	# 印出所有連線
 	print(wins)
 	
 	result = {
-		"tiles": prepare_tiles
+		"tiles": format_tiles
 	}
-	
-# 隨機值
-func _generate_tiles() -> Array:
-	var prepare_tiles: Array = []
-	
-	for i in range(5): # 5 列
-		var row: Array = []
-		for j in range(4): # 每列 4 個
-			row.append(randi_range(0, 12))
-		prepare_tiles.append(row)
-	return prepare_tiles
 	
 # 權重分佈取值
 func pick_weighted(weight_map: Dictionary) -> int:
@@ -386,12 +390,15 @@ func pick_weighted(weight_map: Dictionary) -> int:
 	return weight_map.keys()[0]
 	
 # 權重分佈版本
-func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary,SYMBOL_SUIT:Dictionary) -> Array:
+func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary,SYMBOL_SUIT_WEIGHT:Dictionary) -> Array:
 	var prepare_tiles := []
 	for row in range(5):
 		var line := []
 		for col in range(4):
-			line.append(pick_weighted(SYMBOL_WEIGHT) * pick_weighted(SYMBOL_SUIT))
+			var symbol := pick_weighted(SYMBOL_WEIGHT)
+			var suit := pick_weighted(SYMBOL_SUIT_WEIGHT)
+			var pic_index := symbol * suit
+			line.append({"symbol":symbol, "suit":suit, "pic_index": pic_index})
 		prepare_tiles.append(line)
 	return prepare_tiles
 	
