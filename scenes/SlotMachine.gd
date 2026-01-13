@@ -13,7 +13,9 @@ signal stopped
 
 # 材質陣列
 @export var pictures :Array[Texture2D] = [
-	# 黑桃 (0-12)
+	# 小丑 Joker (0)
+	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_joker_red.png"),
+	# 黑桃 (1-13)
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_A.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_02.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_03.png"),
@@ -27,7 +29,7 @@ signal stopped
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_J.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_Q.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_K.png"),
-	# 紅心 (13-25)
+	# 紅心 (14-26)
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_hearts_A.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_hearts_02.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_hearts_03.png"),
@@ -41,7 +43,7 @@ signal stopped
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_hearts_J.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_hearts_Q.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_hearts_K.png"),
-	# 方塊 (26-38)
+	# 方塊 (27-39)
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_diamonds_A.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_diamonds_02.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_diamonds_03.png"),
@@ -55,7 +57,7 @@ signal stopped
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_diamonds_J.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_diamonds_Q.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_diamonds_K.png"),
-	# 梅花 (39-51)
+	# 梅花 (40-52)
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_clubs_A.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_clubs_02.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_clubs_03.png"),
@@ -277,6 +279,11 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 				tile.show_text()
 			else:
 				tile.hide_text()
+			# 針對特定數字設定效果
+			if (result.tiles[reel][current_idx] == 0):
+				tile.set_foil_card_shader()
+			else:
+				tile.reset_shader_empty()
 			tile.set_texture(pictures[result.tiles[reel][current_idx]])
 		else:
 			tile.set_texture(_randomTexture())
@@ -313,7 +320,7 @@ func _get_result() -> void:
 	
 	# 層級 2：決定「中哪一種符號、哪一條線」
 	const SYMBOL_WEIGHT := {
-		0: 20,
+		0: 50,
 		1: 90,
 		2: 80,
 		3: 70,
@@ -325,7 +332,47 @@ func _get_result() -> void:
 		9: 30,
 		10: 20,
 		11: 20,
-		12: 20
+		12: 20,
+		13: 20,
+		14: 20,
+		15: 20,
+		16: 20,
+		17: 20,
+		18: 20,
+		19: 20,
+		20: 20,
+		21: 20,
+		22: 20,
+		23: 20,
+		24: 20,
+		25: 20,
+		26: 20,
+		27: 20,
+		28: 20,
+		29: 20,
+		30: 20,
+		31: 20,
+		32: 20,
+		33: 20,
+		34: 20,
+		35: 20,
+		36: 20,
+		37: 20,
+		38: 20,
+		39: 20,
+		40: 20,
+		41: 20,
+		42: 20,
+		43: 20,
+		44: 20,
+		45: 20,
+		46: 20,
+		47: 20,
+		48: 20,
+		49: 20,
+		50: 20,
+		51: 20,
+		52: 20,
 	}
 	
 	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT)

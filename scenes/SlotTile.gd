@@ -3,6 +3,8 @@ class_name SlotTile
 
 var _size : Vector2
 var _speed : float
+
+@onready var _sprite = $Sprite
 @onready var _label = $Sprite/Label
 
 signal finished
@@ -53,6 +55,18 @@ func spin_scale():
 
 func spin_scale_seek():
 	$Animations.seek(3.0,true)
+
+func set_foil_card_shader():
+	var shader := load("res://VFX/shaders/Balatro_Foil_card_effect.gdshader")
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	# 設定 shader 參數
+	mat.set_shader_parameter("speed", 0.4)
+	mat.set_shader_parameter("offset", Vector2(randf() * 10.0, randf() * 10.0))
+	_sprite.material = mat
+	
+func reset_shader_empty():
+	_sprite.material = null
 	
 func _on_finished():
 	get_parent()._on_tile_moved(self, self)
