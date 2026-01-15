@@ -118,6 +118,9 @@ var total_runs : int
 # 儲存連線位置
 var wins := []
 
+# 儲存連線花色
+var wins_suit := []
+
 # 已停止轉軸
 var _total_stop_col :int= 0;
 
@@ -165,7 +168,8 @@ func play_once_bigWin_Ani():
 func _count_stopped():
 	_total_stop_col += 1
 	if (_total_stop_col >= 4):
-		win_tile_animation()
+		#win_tile_animation()
+		win_suit_tile_animation()
 		_total_stop_col = 0
 		
 func _init_tiles():
@@ -361,15 +365,27 @@ func _get_result() -> void:
 			format_line.append(t.pic_index)
 		format_tiles.append(format_line)
 	
-	# 判斷數字
+	# 取數字
 	var symbol_tiles:=[]
 	for tile in prepare_tiles:
 		var symbol_line := []
 		for t in tile:
-			symbol_line.append(t.pic_index)
+			symbol_line.append(t.symbol)
 		symbol_tiles.append(symbol_line)
+		
 	# 判斷數字連線
 	check_all_line(symbol_tiles)
+	
+	# 取花色
+	var suit_tiles:=[]
+	for tile in prepare_tiles:
+		var suit_line := []
+		for t in tile:
+			suit_line.append(t.suit)
+		suit_tiles.append(suit_line)
+		
+	# 判斷花色連線
+	check_suit_line(suit_tiles)
 	
 	print(prepare_tiles)
 	# 印出所有連線
@@ -505,6 +521,14 @@ func check_all_line(tiles: Array) -> Array:
 	#wins += check_diagonal_up_right(tiles)
 	return wins
 	
+func check_suit_line(tiles: Array) -> Array:
+	# 初始化
+	wins_suit = []
+	wins_suit += check_vertical_linked_tiles(tiles)
+	#wins += check_diagonal_down_right(tiles)
+	#wins += check_diagonal_up_right(tiles)
+	return wins_suit
+	
 # 判斷當前是否命中內
 func is_win_tile(col: int, row: int, wins: Array) -> bool:
 	for p in wins:
@@ -518,4 +542,18 @@ func win_tile_animation():
 		print(" win.col:", win.col, " win.row:", win.row, " size:",tiles.size())
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
-				tile.card_fire()
+				tile.play_sequence([
+					{ "type": "fire" },
+					{ "type": "suits_spades" },
+				])
+
+# 播放命中花色瓦片動畫
+func win_suit_tile_animation():
+	for win in wins_suit:
+		print(" win.col:", win.col, " win.row:", win.row, " size:",tiles.size())
+		for tile in tiles:
+			if tile.position == grid_pos[win.col][win.row]:
+				tile.play_sequence([
+					{ "type": "fire" },
+					{ "type": "suits_spades" },
+				])
