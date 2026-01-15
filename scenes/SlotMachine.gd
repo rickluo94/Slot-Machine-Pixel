@@ -213,7 +213,7 @@ func start() -> void:
 		total_runs = expected_runs
 		# 停止所有瓦片動畫
 		for tile in tiles:
-			tile.card_scale_seek()
+			tile.card_reset()
 		# 向伺服器請求結果
 		_get_result()
 		print("Start Get Random :",result)
@@ -352,7 +352,7 @@ func _get_result() -> void:
 			#[33, 9, 7, 25], 
 			#[33, 0, 47, 12]
 		#]
-	
+		
 	# 瓦片材質陣列
 	var format_tiles:=[]
 	for tile in prepare_tiles:
@@ -370,6 +370,8 @@ func _get_result() -> void:
 		symbol_tiles.append(symbol_line)
 	# 判斷數字連線
 	check_all_line(symbol_tiles)
+	
+	print(prepare_tiles)
 	# 印出所有連線
 	print(wins)
 	
@@ -397,8 +399,21 @@ func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary,SYMBOL_SUIT_WEIGHT:Dictionary) -
 		var line := []
 		for col in range(4):
 			var symbol := pick_weighted(SYMBOL_WEIGHT)
-			var suit := pick_weighted(SYMBOL_SUIT_WEIGHT)
-			var pic_index := symbol * suit
+			var suit := 0
+			var pic_index := 0
+			if (symbol != 0):
+				suit = pick_weighted(SYMBOL_SUIT_WEIGHT)
+			match suit:
+				1:
+					pic_index = symbol
+				2:
+					pic_index = symbol + 13
+				3:
+					pic_index = symbol + 26
+				4:
+					pic_index = symbol + 39
+				_:
+					pic_index = 0
 			line.append({"symbol":symbol, "suit":suit, "pic_index": pic_index})
 		prepare_tiles.append(line)
 	return prepare_tiles

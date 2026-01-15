@@ -56,8 +56,11 @@ func card_scale():
 func card_fire():
 	$Animations.play('CARD_FIRE')
 	
-func card_scale_seek():
-	$Animations.seek(3.0,true)
+func card_suits_spades():
+	$Animations.play('CARD_SUITS_SPADES')
+	
+func card_reset():
+	$Animations.play("RESET")
 	
 func set_foil_card_shader():
 	var shader := load("res://VFX/shaders/Balatro_Foil_card_effect.gdshader")
