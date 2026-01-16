@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 // --- Uniform Parameters ---
 uniform float beat_speed : hint_range(0.1, 10.0) = 0.3; 
-uniform float pulse_intensity : hint_range(0.0, 1.0) = 0.1; 
+uniform float pulse_intensity : hint_range(0.0, 1.0) = 0.3; 
 uniform float glow_intensity : hint_range(0.0, 2.0) = 0.5; 
 uniform vec3 pulse_color : source_color = vec3(0.961, 0.957, 0.941);
 uniform bool use_glow = false;

@@ -284,7 +284,7 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 				tile.hide_text()
 			# 針對特定數字設定效果
 			if (result.tiles[reel][current_idx] == 0):
-				tile.set_rhythmic_color_card_shader()
+				tile.set_arlez80s_glitch_card_shader()
 			else:
 				tile.reset_shader_empty()
 			tile.set_texture(pictures[result.tiles[reel][current_idx]])
@@ -323,28 +323,28 @@ func _get_result() -> void:
 	
 	# 層級 2：決定「數字」
 	const SYMBOL_WEIGHT := {
-		0: 30,
-		1: 70,
-		2: 70,
-		3: 70,
-		4: 70,
-		5: 70,
-		6: 70,
-		7: 70,
-		8: 70,
-		9: 70,
-		10: 70,
-		11: 70,
-		12: 70,
-		13: 70
+		0: 1,
+		1: 1,
+		2: 1,
+		3: 1,
+		4: 1,
+		5: 1,
+		6: 1,
+		7: 1,
+		8: 1,
+		9: 1,
+		10: 1,
+		11: 1,
+		12: 1,
+		13: 1
 	}
 	
 	# 層級 3：決定「花色」
 	const SYMBOL_SUIT_WEIGHT := {
-		1: 100,
-		2: 100,
-		3: 100,
-		4: 100,
+		1: 1,
+		2: 1,
+		3: 1,
+		4: 1,
 	}
 	
 	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT,SYMBOL_SUIT_WEIGHT)

@@ -110,6 +110,13 @@ func set_rhythmic_color_card_shader():
 	# 設定 shader 參數
 	_sprite.material = mat
 	
+func set_arlez80s_glitch_card_shader():
+	var shader := load("res://VFX/shaders/Arlez80s_Glitch.gdshader")
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	# 設定 shader 參數
+	_sprite.material = mat
+	
 func set_fire_card_shader():
 	var shader := load("res://VFX/shaders/Balatro_Fire.gdshader")
 	var mat := ShaderMaterial.new()
