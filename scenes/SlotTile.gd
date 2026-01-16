@@ -60,7 +60,14 @@ func card_suits_spades():
 	$Animations.play('CARD_SUITS_SPADES')
 	
 func card_reset():
+	# 1. 停止當前正在播放的動畫並「清空」排隊中的 queue
+	$Animations.stop(true)
+	
+	# 2. 播放重置動畫
 	$Animations.play("RESET")
+	
+	# 3. 確保 RESET 立即生效（屬性回到初始值）
+	$Animations.advance(0)
 	
 func add_queue(anim: StringName) -> void:
 	$Animations.queue(anim)

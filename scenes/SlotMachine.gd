@@ -168,8 +168,7 @@ func play_once_bigWin_Ani():
 func _count_stopped():
 	_total_stop_col += 1
 	if (_total_stop_col >= 4):
-		#win_tile_animation()
-		win_suit_tile_animation()
+		play_all_wins()
 		_total_stop_col = 0
 		
 func _init_tiles():
@@ -536,24 +535,20 @@ func is_win_tile(col: int, row: int, wins: Array) -> bool:
 			return true
 	return false
 	
-# 播放命中瓦片動畫
-func win_tile_animation():
-	for win in wins:
-		print(" win.col:", win.col, " win.row:", win.row, " size:",tiles.size())
+			
+# 播放命中動畫
+func play_all_wins():
+	var all_wins = []
+	
+	# 將動畫類型標籤加入資料中
+	for w in wins:
+		all_wins.append({"data": w, "anim": "CARD_FIRE"})
+	for w in wins_suit:
+		all_wins.append({"data": w, "anim": "CARD_SUITS_SPADES"})
+	
+	# 統一處理
+	for item in all_wins:
+		var win = item.data
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
-				tile.play_sequence([
-					{ "type": "CARD_FIRE" },
-					{ "type": "CARD_SUITS_SPADES" },
-				])
-
-# 播放命中花色瓦片動畫
-func win_suit_tile_animation():
-	for win in wins_suit:
-		print(" win.col:", win.col, " win.row:", win.row, " size:",tiles.size())
-		for tile in tiles:
-			if tile.position == grid_pos[win.col][win.row]:
-				tile.play_sequence([
-					{ "type": "CARD_FIRE" },
-					{ "type": "CARD_SUITS_SPADES" },
-				])
+				tile.play_sequence([{ "type": item.anim }])
