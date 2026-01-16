@@ -122,7 +122,13 @@ var wins := []
 var wins_suit := []
 
 # 已停止轉軸
-var _total_stop_col :int= 0;
+var _total_stop_col :int = 0
+
+# 決定「數字」權重
+var SYMBOL_WEIGHT := {}
+
+# 決定「花色」權重
+var SYMBOL_SUIT_WEIGHT := {}
 
 # 聲音
 @onready var spin_sound = $"../../../SpinSound"
@@ -171,6 +177,33 @@ func _count_stopped():
 		play_all_wins()
 		_total_stop_col = 0
 		
+func _init_math():
+	# 層級 2：決定「數字」權重
+	SYMBOL_WEIGHT = {
+		0: 1,
+		1: 14,
+		2: 13,
+		3: 12,
+		4: 11,
+		5: 10,
+		6: 9,
+		7: 8,
+		8: 7,
+		9: 6,
+		10: 5,
+		11: 4,
+		12: 3,
+		13: 2
+	}
+	
+	# 層級 3：決定「花色」
+	SYMBOL_SUIT_WEIGHT = {
+		1: 1,
+		2: 1,
+		3: 1,
+		4: 1,
+	}
+	
 func _init_tiles():
 	# 初始化瓦片格子
 	for col in reels:
@@ -184,6 +217,9 @@ func _init_tiles():
 func _ready():
 	# BGM
 	bgm_sound.play()
+	
+	# 初始化權重數值
+	_init_math()
 	
 	# WIN ANI
 	bigWin_Ani_ini()
@@ -321,31 +357,6 @@ func _get_result() -> void:
 	var is_win := randf() < hit_rate # 贏或輸
 	var prepare_tiles: Array = []
 	
-	# 層級 2：決定「數字」
-	const SYMBOL_WEIGHT := {
-		0: 1,
-		1: 1,
-		2: 1,
-		3: 1,
-		4: 1,
-		5: 1,
-		6: 1,
-		7: 1,
-		8: 1,
-		9: 1,
-		10: 1,
-		11: 1,
-		12: 1,
-		13: 1
-	}
-	
-	# 層級 3：決定「花色」
-	const SYMBOL_SUIT_WEIGHT := {
-		1: 1,
-		2: 1,
-		3: 1,
-		4: 1,
-	}
 	
 	prepare_tiles = generate_tiles_v1(SYMBOL_WEIGHT,SYMBOL_SUIT_WEIGHT)
 	#prepare_tiles = [
