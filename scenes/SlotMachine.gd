@@ -14,7 +14,7 @@ signal stopped
 # 材質陣列
 @export var pictures :Array[Texture2D] = [
 	# 小丑 Joker (0)
-	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_joker_red.png"),
+	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_joker_red_v2.png"),
 	# 黑桃 (1-13)
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_A.png"),
 	preload("res://sprites/kenney_playing-cards-pack/PNG/Cards (large)/card_spades_02.png"),
@@ -284,7 +284,7 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 				tile.hide_text()
 			# 針對特定數字設定效果
 			if (result.tiles[reel][current_idx] == 0):
-				tile.set_foil_card_shader()
+				tile.set_rhythmic_color_card_shader()
 			else:
 				tile.reset_shader_empty()
 			tile.set_texture(pictures[result.tiles[reel][current_idx]])

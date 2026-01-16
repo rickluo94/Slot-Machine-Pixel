@@ -103,6 +103,13 @@ func set_foil_card_shader():
 	# 設定 shader 參數
 	_sprite.material = mat
 	
+func set_rhythmic_color_card_shader():
+	var shader := load("res://VFX/shaders/Rhythmic_Color_Pulse.gdshader")
+	var mat := ShaderMaterial.new()
+	mat.shader = shader
+	# 設定 shader 參數
+	_sprite.material = mat
+	
 func set_fire_card_shader():
 	var shader := load("res://VFX/shaders/Balatro_Fire.gdshader")
 	var mat := ShaderMaterial.new()
