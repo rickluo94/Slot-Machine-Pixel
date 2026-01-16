@@ -434,7 +434,7 @@ func generate_tiles_v1(SYMBOL_WEIGHT:Dictionary,SYMBOL_SUIT_WEIGHT:Dictionary) -
 	return prepare_tiles
 	
 # 判斷直線
-func check_vertical_linked_tiles(tiles: Array) -> Array:
+func check_vertical_linked_tiles(tiles: Array,type: String) -> Array:
 	var hits:= []
 	var rows: int = tiles.size()
 	var cols: int = tiles[0].size()
@@ -451,7 +451,8 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 				if run_length >= 3:
 					for i in range(run_length):
 						hits.append({
-							"type": "→",
+							"type": type,
+							"directions": "→",
 							"col": run_start + i,
 							"row": col,
 							"symbol": current_symbol
@@ -464,7 +465,8 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 		if run_length >= 3:
 			for i in range(run_length):
 				hits.append({
-					"type": "→",
+					"type": type,
+					"directions": "→",
 					"col": run_start + i,
 					"row": col,
 					"symbol": current_symbol
@@ -515,17 +517,13 @@ func check_vertical_linked_tiles(tiles: Array) -> Array:
 func check_all_line(tiles: Array) -> Array:
 	# 初始化
 	wins = []
-	wins += check_vertical_linked_tiles(tiles)
-	#wins += check_diagonal_down_right(tiles)
-	#wins += check_diagonal_up_right(tiles)
+	wins += check_vertical_linked_tiles(tiles,"number")
 	return wins
 	
 func check_suit_line(tiles: Array) -> Array:
 	# 初始化
 	wins_suit = []
-	wins_suit += check_vertical_linked_tiles(tiles)
-	#wins += check_diagonal_down_right(tiles)
-	#wins += check_diagonal_up_right(tiles)
+	wins_suit += check_vertical_linked_tiles(tiles,"suit")
 	return wins_suit
 	
 # 判斷當前是否命中內
@@ -544,11 +542,22 @@ func play_all_wins():
 	for w in wins:
 		all_wins.append({"data": w, "anim": "CARD_FIRE"})
 	for w in wins_suit:
-		all_wins.append({"data": w, "anim": "CARD_SUITS_SPADES"})
+		match w.symbol:
+			1:
+				all_wins.append({"data": w, "anim": "CARD_SUITS_SPADES"})
+			2:
+				all_wins.append({"data": w, "anim": "CARD_SUITS_HEARTS"})
+			3:
+				all_wins.append({"data": w, "anim": "CARD_SUITS_DIAMONDS"})
+			4:
+				all_wins.append({"data": w, "anim": "CARD_SUITS_CLUBS"})
+			_:
+				print("no suit")
 	
 	# 統一處理
 	for item in all_wins:
 		var win = item.data
+		print(item.data)
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
 				tile.play_sequence([{ "type": item.anim }])
