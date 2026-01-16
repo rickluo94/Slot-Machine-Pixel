@@ -62,26 +62,25 @@ func card_suits_spades():
 func card_reset():
 	$Animations.play("RESET")
 	
-func play_anim(anim: StringName) -> void:
-	$Animations.play(anim)
-	await finished
+func add_queue(anim: StringName) -> void:
+	$Animations.queue(anim)
 		
 func play_sequence(sequence: Array) -> void:
 	for step in sequence:
 		match step.type:
-			"spin_up":
-				await play_anim("SPIN_UP")
-			"spin_down":
-				await play_anim("SPIN_DOWN")
-			"scale":
-				await play_anim("SPIN_SCALE")
-			"fire":
-				await play_anim("CARD_FIRE")
-			"suits_spades":
-				await play_anim("CARD_SUITS_SPADES")
-			"reset":
-				await play_anim("RESET")
-	
+			"SPIN_UP":
+				add_queue("SPIN_UP") 
+			"SPIN_DOWN":
+				add_queue("SPIN_DOWN") 
+			"SPIN_SCALE":
+				add_queue("SPIN_SCALE")
+			"CARD_FIRE":
+				add_queue("CARD_FIRE")
+			"CARD_SUITS_SPADES":
+				add_queue("CARD_SUITS_SPADES")
+			"RESET":
+				add_queue("RESET")
+				
 func set_foil_card_shader():
 	var shader := load("res://VFX/shaders/Balatro_Foil_card_effect.gdshader")
 	var mat := ShaderMaterial.new()

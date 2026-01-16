@@ -543,8 +543,8 @@ func win_tile_animation():
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
 				tile.play_sequence([
-					{ "type": "fire" },
-					{ "type": "suits_spades" },
+					{ "type": "CARD_FIRE" },
+					{ "type": "CARD_SUITS_SPADES" },
 				])
 
 # 播放命中花色瓦片動畫
@@ -554,6 +554,6 @@ func win_suit_tile_animation():
 		for tile in tiles:
 			if tile.position == grid_pos[win.col][win.row]:
 				tile.play_sequence([
-					{ "type": "fire" },
-					{ "type": "suits_spades" },
+					{ "type": "CARD_FIRE" },
+					{ "type": "CARD_SUITS_SPADES" },
 				])
