@@ -72,21 +72,29 @@ func card_reset():
 func add_queue(anim: StringName) -> void:
 	$Animations.queue(anim)
 		
+#func play_sequence(sequence: Array) -> void:
+	#for step in sequence:
+		#match step.type:
+			#"SPIN_UP":
+				#add_queue("SPIN_UP") 
+			#"SPIN_DOWN":
+				#add_queue("SPIN_DOWN") 
+			#"SPIN_SCALE":
+				#add_queue("SPIN_SCALE")
+			#"CARD_FIRE":
+				#add_queue("CARD_FIRE")
+			#"CARD_SUITS_SPADES":
+				#add_queue("CARD_SUITS_SPADES")
+			#"RESET":
+				#add_queue("RESET")
+				
 func play_sequence(sequence: Array) -> void:
 	for step in sequence:
-		match step.type:
-			"SPIN_UP":
-				add_queue("SPIN_UP") 
-			"SPIN_DOWN":
-				add_queue("SPIN_DOWN") 
-			"SPIN_SCALE":
-				add_queue("SPIN_SCALE")
-			"CARD_FIRE":
-				add_queue("CARD_FIRE")
-			"CARD_SUITS_SPADES":
-				add_queue("CARD_SUITS_SPADES")
-			"RESET":
-				add_queue("RESET")
+		# 直接將 type 轉為 StringName 丟入 queue
+		if $Animations.has_animation(step.type):
+			add_queue(step.type)
+		else:
+			push_warning("動畫名稱不存在: " + step.type)
 				
 func set_foil_card_shader():
 	var shader := load("res://VFX/shaders/Balatro_Foil_card_effect.gdshader")
