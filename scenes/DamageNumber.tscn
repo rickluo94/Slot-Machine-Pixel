@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuqxu6dowgb37"]
+
+[ext_resource type="Script" uid="uid://dbppslsg0ft5s" path="res://scenes/DamageNumber.gd" id="1_p3gxv"]
+
+[node name="DamageNumber" type="Node2D"]
+script = ExtResource("1_p3gxv")
+
+[node name="Digits" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Digits"]
