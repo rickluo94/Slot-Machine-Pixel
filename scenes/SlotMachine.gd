@@ -4,7 +4,7 @@ class_name SlotMachine
 const SlotTile := preload("res://scenes/SlotTile.tscn")
 const Player := preload("res://scenes/Player.tscn")
 const ActionEffect := preload("res://scenes/ActionEffect.tscn")
-
+	
 var player:Node2D
 var actionEffect:Node2D
 # 儲存 SlotTile 的 SPIN_UP 動畫移動距離
@@ -147,6 +147,7 @@ var SYMBOL_SUIT_WEIGHT := {}
 @onready var bigWin_Ani = $"../../../turmp_point"
 
 	
+	
 func _on_anim_finished():
 	big_win_coin_img.visible = false
 	coin_treasure_img.visible = false
@@ -159,7 +160,6 @@ func bigWin_Ani_ini():
 	big_win_coin_img.visible = false
 	coin_treasure_img.visible = false
 	bigWin_Ani.visible = false
-	bigWin_Ani.animation_finished.connect(_on_anim_finished)
 	
 func play_once_bigWin_Ani():
 	big_win_coin_img.pop_big()
@@ -226,6 +226,7 @@ func _ready():
 	
 	# 初始化瓦片格子
 	_init_tiles()
+
   
 # 在指定的格子位置儲存並初始化一個新的瓦片
 func _add_tile(col :int, row :int) -> void:
@@ -243,7 +244,7 @@ func _add_tile(col :int, row :int) -> void:
 # 回傳指定格子位置的瓦片
 func get_tile(col :int, row :int) -> SlotTile:
 	return tiles[(col * rows) + row]
-
+	
 func start() -> void:
 	_on_anim_finished()
 	# 僅在尚未運作時才開始

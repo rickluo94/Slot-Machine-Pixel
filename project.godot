@@ -28,6 +28,10 @@ window/size/test_width=640
 window/size/test_height=360
 window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

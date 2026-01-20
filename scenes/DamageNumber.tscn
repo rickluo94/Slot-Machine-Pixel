@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuqxu6dowgb37"]
+[gd_scene load_steps=13 format=3 uid="uid://cuqxu6dowgb37"]
 
 [ext_resource type="Script" uid="uid://dbppslsg0ft5s" path="res://scenes/DamageNumber.gd" id="1_p3gxv"]
 [ext_resource type="Texture2D" uid="uid://dlo83k4cqx58x" path="res://aseprite/Sprite-Number.png" id="2_5t1lh"]
@@ -7,11 +7,83 @@
 atlas = ExtResource("2_5t1lh")
 region = Rect2(0, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t1lh"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0is35"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oxqj"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb8dg"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsmc5"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biwql"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7xog"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piyt8"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n42e6"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(576, 0, 64, 64)
+
 [node name="DamageNumber" type="Node2D"]
 script = ExtResource("1_p3gxv")
 
 [node name="Digits" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Digits"]
+[node name="Digits_0" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
 texture = SubResource("AtlasTexture_u56du")
-region_rect = Rect2(6, 6, 52, 54)
+
+[node name="Digits_1" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_5t1lh")
+
+[node name="Digits_2" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_0is35")
+
+[node name="Digits_3" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_5oxqj")
+
+[node name="Digits_4" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_jb8dg")
+
+[node name="Digits_5" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_vsmc5")
+
+[node name="Digits_6" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_biwql")
+
+[node name="Digits_7" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_b7xog")
+
+[node name="Digits_8" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_piyt8")
+
+[node name="Digits_9" type="Sprite2D" parent="Digits"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_n42e6")
