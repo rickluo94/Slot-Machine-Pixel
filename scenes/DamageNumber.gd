@@ -41,7 +41,8 @@ func play(value: int) -> void:
 		count += 1
 		
 	_layout_slots_centered(count)
-	_play_hit_animation()
+	#_play_hit_animation()
+	_play_crit_shake()
 	
 # -------------------------------------------------
 # Setup
@@ -103,7 +104,7 @@ func _play_hit_animation() -> void:
 	tween.parallel().tween_property(
 		self,
 		"scale",
-		Vector2.ONE * 1.6,
+		Vector2.ONE * 1.8,
 		0.12
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
@@ -126,3 +127,52 @@ func _play_hit_animation() -> void:
 	tween.finished.connect(func():
 		queue_free()
 	)
+	
+# 爆擊
+func _play_crit_shake(
+	strength: float = 10.0,
+	shake_time: float = 0.16,
+	frequency: int = 6
+) -> void:
+	scale = Vector2.ONE * 1.6
+	
+	# 以「目前畫面位置」為基準
+	var base_pos := position
+	
+	var tween := create_tween()
+	
+	tween.set_parallel(false)
+	
+	for i in range(frequency):
+		var offset := Vector2(
+			randf_range(-strength, strength),
+			randf_range(-strength, strength)
+		)
+		tween.tween_property(
+			self,
+			"position",
+			base_pos + offset,
+			shake_time / float(frequency)
+		).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		
+	# 結尾一定要回到 base_pos（關鍵）
+	tween.tween_property(
+		self,
+		"position",
+		base_pos,
+		0.04
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+	# 消失（淡出）
+	tween.parallel().tween_property(
+		self,
+		"modulate:a",
+		0.0,
+		0.2
+	).set_delay(duration - 0.2)
+	
+	# 結束後釋放
+	tween.finished.connect(func():
+		queue_free()
+	)
+	
