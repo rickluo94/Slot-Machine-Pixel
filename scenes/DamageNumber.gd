@@ -86,7 +86,7 @@ func _layout_slots_centered(count: int) -> void:
 # -------------------------------------------------
 func _play_hit_animation() -> void:
 	# 初始：被打中的壓縮感
-	scale = Vector2.ONE * 0.5
+	scale = Vector2.ONE * 1.2
 	modulate.a = 1.0
 	
 	var tween := create_tween()
@@ -104,7 +104,7 @@ func _play_hit_animation() -> void:
 	tween.parallel().tween_property(
 		self,
 		"scale",
-		Vector2.ONE * 1.8,
+		Vector2.ONE * 2,
 		0.12
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	

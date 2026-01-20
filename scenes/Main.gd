@@ -47,5 +47,5 @@ func _on_slot_machine_stopped():
 func _count_stopped_show_damage():
 	_total_stop += 1
 	if (_total_stop >= 4):
-		show_damage_number(monster.position)
+		show_damage_number(monster.position * 0.9)
 		_total_stop = 0
