@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuqxu6dowgb37"]
+[gd_scene load_steps=4 format=3 uid="uid://cuqxu6dowgb37"]
 
 [ext_resource type="Script" uid="uid://dbppslsg0ft5s" path="res://scenes/DamageNumber.gd" id="1_p3gxv"]
+[ext_resource type="Texture2D" uid="uid://dlo83k4cqx58x" path="res://aseprite/Sprite-Number.png" id="2_5t1lh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u56du"]
+atlas = ExtResource("2_5t1lh")
+region = Rect2(0, 0, 64, 64)
 
 [node name="DamageNumber" type="Node2D"]
 script = ExtResource("1_p3gxv")
@@ -8,3 +13,5 @@ script = ExtResource("1_p3gxv")
 [node name="Digits" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Digits"]
+texture = SubResource("AtlasTexture_u56du")
+region_rect = Rect2(6, 6, 52, 54)
