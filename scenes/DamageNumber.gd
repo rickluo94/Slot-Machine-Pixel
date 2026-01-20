@@ -2,7 +2,7 @@ extends Node2D
 class_name DamageNumber
 
 # 數字間距
-@export var digit_spacing: float = 50.0
+@export var digit_spacing: float = 20.0
 # 漂浮高度
 @export var rise_distance: float = 100.0
 # 持續時間
@@ -41,8 +41,8 @@ func play(value: int) -> void:
 		count += 1
 		
 	_layout_slots_centered(count)
-	#_play_hit_animation()
-	_play_crit_shake()
+	_play_hit_animation()
+	#_play_crit_shake()
 	
 # -------------------------------------------------
 # Setup
