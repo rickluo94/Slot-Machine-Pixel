@@ -3,15 +3,22 @@ class_name SlotTile
 
 var _size : Vector2
 var _speed : float
+var _pending_last_anim: StringName = ""
 
 @onready var _sprite = $Sprite
 @onready var _label = $Sprite/Label
 
+signal sequence_finished
 signal finished
 
 func _ready() -> void:
-	pass
+	$Animations.animation_finished.connect(_on_animation_finished)
 	
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == _pending_last_anim:
+		_pending_last_anim = ""
+		emit_signal("sequence_finished")
+		
 func show_text():
 	_label.visible = true
 	
@@ -72,25 +79,13 @@ func card_reset():
 func add_queue(anim: StringName) -> void:
 	$Animations.queue(anim)
 		
-#func play_sequence(sequence: Array) -> void:
-	#for step in sequence:
-		#match step.type:
-			#"SPIN_UP":
-				#add_queue("SPIN_UP") 
-			#"SPIN_DOWN":
-				#add_queue("SPIN_DOWN") 
-			#"SPIN_SCALE":
-				#add_queue("SPIN_SCALE")
-			#"CARD_FIRE":
-				#add_queue("CARD_FIRE")
-			#"CARD_SUITS_SPADES":
-				#add_queue("CARD_SUITS_SPADES")
-			#"RESET":
-				#add_queue("RESET")
-				
 func play_sequence(sequence: Array) -> void:
+	if sequence.is_empty():
+		emit_signal("sequence_finished")
+		return
+	# 記住最後一個動畫名稱
+	_pending_last_anim = sequence[-1].type
 	for step in sequence:
-		# 直接將 type 轉為 StringName 丟入 queue
 		if $Animations.has_animation(step.type):
 			add_queue(step.type)
 		else:

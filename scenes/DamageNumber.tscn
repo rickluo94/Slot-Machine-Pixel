@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuqxu6dowgb37"]
+[gd_scene load_steps=11 format=3 uid="uid://cuqxu6dowgb37"]
 
 [ext_resource type="Script" uid="uid://dbppslsg0ft5s" path="res://scenes/DamageNumber.gd" id="1_p3gxv"]
 [ext_resource type="Texture2D" uid="uid://3n8akunl7trw" path="res://aseprite/Ardentryst-Numbers/ArdentrystNumbers1.png" id="2_n42e6"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://id1bjygokb56" path="res://aseprite/Ardentryst-Numbers/ArdentrystNumbers7.png" id="8_a3rtw"]
 [ext_resource type="Texture2D" uid="uid://b2tfoyk831fnm" path="res://aseprite/Ardentryst-Numbers/ArdentrystNumbers8.png" id="9_q2o5k"]
 [ext_resource type="Texture2D" uid="uid://3r0pr4vs02ti" path="res://aseprite/Ardentryst-Numbers/ArdentrystNumbers9.png" id="10_5lee5"]
-[ext_resource type="Texture2D" uid="uid://cv33nh10ykvhr" path="res://aseprite/Ardentryst-Numbers/ArdentrystNumbers10.png" id="11_va0cq"]
 
 [node name="DamageNumber" type="Node2D"]
 script = ExtResource("1_p3gxv")
@@ -55,4 +54,3 @@ texture = ExtResource("10_5lee5")
 
 [node name="Digits_9" type="Sprite2D" parent="Digits"]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("11_va0cq")

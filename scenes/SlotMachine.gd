@@ -130,6 +130,9 @@ var SYMBOL_WEIGHT := {}
 # 決定「花色」權重
 var SYMBOL_SUIT_WEIGHT := {}
 
+# 贏分
+var WIN_POINT := 0
+
 # 聲音
 @onready var spin_sound = $"../../../SpinSound"
 @onready var stop_sound = $"../../../StopSound"
@@ -399,8 +402,12 @@ func _get_result() -> void:
 	check_suit_line(suit_tiles)
 	
 	print(prepare_tiles)
+	
 	# 印出所有連線
 	print(wins)
+	
+	# 贏得分數
+	print("Win Point:",calculate_score(wins, wins_suit))
 	
 	result = {
 		"tiles": format_tiles
@@ -467,7 +474,8 @@ func check_vertical_linked_tiles(tiles: Array,type: String) -> Array:
 							"directions": "→",
 							"col": run_start + i,
 							"row": col,
-							"symbol": current_symbol
+							"symbol": current_symbol,
+							"point": 1
 						})
 				# 開新段
 				current_symbol = v
@@ -481,7 +489,8 @@ func check_vertical_linked_tiles(tiles: Array,type: String) -> Array:
 					"directions": "→",
 					"col": run_start + i,
 					"row": col,
-					"symbol": current_symbol
+					"symbol": current_symbol,
+					"point": 1
 				})
 	return hits
 	
@@ -545,31 +554,74 @@ func is_win_tile(col: int, row: int, wins: Array) -> bool:
 			return true
 	return false
 	
+# 計分用
+func calculate_score(wins, wins_suit) -> int:
+	var score := 0
+	
+	for w in wins:
+		score += w.point
+		
+	for w in wins_suit:
+		score += w.point
+		
+	return score
+	
 			
 # 播放命中動畫
 func play_all_wins():
-	var all_wins = []
+	await play_win_group(wins, "CARD_FIRE")
+	await play_suit_group(wins_suit)
+				
+# 播放數字連線
+func play_win_group(win_list, anim_type: String) -> void:
+	var playing := []
 	
-	# 將動畫類型標籤加入資料中
-	for w in wins:
-		all_wins.append({"data": w, "anim": "CARD_FIRE"})
-	for w in wins_suit:
-		match w.symbol:
-			1:
-				all_wins.append({"data": w, "anim": "CARD_SUITS_SPADES"})
-			2:
-				all_wins.append({"data": w, "anim": "CARD_SUITS_HEARTS"})
-			3:
-				all_wins.append({"data": w, "anim": "CARD_SUITS_DIAMONDS"})
-			4:
-				all_wins.append({"data": w, "anim": "CARD_SUITS_CLUBS"})
-			_:
-				print("no suit")
-	
-	# 統一處理
-	for item in all_wins:
-		var win = item.data
-		print(item.data)
+	for w in win_list:
 		for tile in tiles:
-			if tile.position == grid_pos[win.col][win.row]:
-				tile.play_sequence([{ "type": item.anim }])
+			if tile.position == grid_pos[w.col][w.row]:
+				playing.append(tile)
+				tile.play_sequence([{ "type": anim_type }])
+				
+	# 等所有 tile 播完
+	for tile in playing:
+		await tile.sequence_finished
+		
+# 播放花色連線
+func play_suit_group(win_list) -> void:
+	var playing := []
+	
+	for w in win_list:
+		var anim := suit_to_anim(w.symbol)
+		
+		for tile in tiles:
+			if tile.position == grid_pos[w.col][w.row]:
+				playing.append(tile)
+				tile.play_sequence([{ "type": anim }])
+				
+	for tile in playing:
+		await tile.sequence_finished
+		
+func build_win_animation_list():
+	var list := []
+	
+	for w in wins:
+		list.append({
+			"win": w,
+			"anim": "CARD_FIRE"
+		})
+		
+	for w in wins_suit:
+		list.append({
+			"win": w,
+			"anim": suit_to_anim(w.symbol)
+		})
+		
+	return list
+	
+func suit_to_anim(symbol: int) -> String:
+	match symbol:
+		1: return "CARD_SUITS_SPADES"
+		2: return "CARD_SUITS_HEARTS"
+		3: return "CARD_SUITS_DIAMONDS"
+		4: return "CARD_SUITS_CLUBS"
+		_: return ""
