@@ -124,6 +124,9 @@ var wins_suit := []
 # 已停止轉軸
 var _total_stop_col :int = 0
 
+# 已停止轉軸
+var _total_stop :int = 0
+
 # 決定「數字」權重
 var SYMBOL_WEIGHT := {}
 
@@ -625,3 +628,19 @@ func suit_to_anim(symbol: int) -> String:
 		3: return "CARD_SUITS_DIAMONDS"
 		4: return "CARD_SUITS_CLUBS"
 		_: return ""
+		
+func count_stopped_show_damage(hit_position:Vector2):
+	_total_stop += 1
+	if (_total_stop >= 4):
+		show_damage_number(hit_position)
+		_total_stop = 0
+		
+func show_damage_number(hit_position: Vector2) -> void:
+	var dn := preload("res://scenes/DamageNumber.tscn").instantiate()
+	
+	var main := get_tree().current_scene
+	main.add_child(dn)
+	dn.global_position = hit_position
+	
+	var rnumber = calculate_score(wins, wins_suit)
+	dn.play(rnumber)
