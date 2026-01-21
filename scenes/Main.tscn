@@ -1,4 +1,4 @@
-[gd_scene load_steps=448 format=3 uid="uid://b6ys4jb1sh4qi"]
+[gd_scene load_steps=449 format=3 uid="uid://b6ys4jb1sh4qi"]
 
 [ext_resource type="Script" uid="uid://b1ya8l3kmc7t6" path="res://scenes/SlotMachine.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://d3lcufs5me42f" path="res://background/flat-design-poker-table-background/9999520.jpg" id="2_8vg3j"]
@@ -363,6 +363,7 @@
 [ext_resource type="Texture2D" uid="uid://5ew1t2v4llpo" path="res://win/trump_point/frame_0267.png" id="182_vtpmp"]
 [ext_resource type="Texture2D" uid="uid://cls8oqawwx4eo" path="res://win/trump_point/frame_0268.png" id="183_luo8a"]
 [ext_resource type="Texture2D" uid="uid://w6hx4sjubnk5" path="res://win/trump_point/frame_0269.png" id="184_ktuwx"]
+[ext_resource type="PackedScene" uid="uid://cje0d2nymko3p" path="res://scenes/PlayerCoin.tscn" id="184_sipgg"]
 [ext_resource type="Texture2D" uid="uid://dwh7ssku15wfa" path="res://win/trump_point/frame_0270.png" id="185_qyk2a"]
 [ext_resource type="Texture2D" uid="uid://b6d2v4pyg1i5u" path="res://win/trump_point/frame_0271.png" id="186_d5nhx"]
 [ext_resource type="Texture2D" uid="uid://3jq1dq0wkbdl" path="res://win/trump_point/frame_0272.png" id="187_spuyh"]
@@ -1826,15 +1827,8 @@ scale = Vector2(1.5613533, 1.5613531)
 sprite_frames = SubResource("SpriteFrames_hohh6")
 animation = &"draw"
 autoplay = "laugh"
-frame = 20
-frame_progress = 0.23000324
 
-[node name="ColorRectTop" type="ColorRect" parent="."]
-visible = false
-offset_top = -4.0
-offset_right = 1152.0
-offset_bottom = 197.0
-color = Color(0, 0, 0, 1)
+[node name="PlayerCoin" parent="." instance=ExtResource("184_sipgg")]
 
 [node name="CombatViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -1849,13 +1843,6 @@ render_target_update_mode = 0
 
 [node name="CombatBoard" type="Node2D" parent="CombatViewportContainer/Viewport"]
 script = ExtResource("3_0bbpv")
-
-[node name="ColorRectBottom" type="ColorRect" parent="."]
-visible = false
-offset_top = 405.0
-offset_right = 1152.0
-offset_bottom = 938.334
-color = Color(0, 0, 0, 1)
 
 [node name="turmp_point" type="AnimatedSprite2D" parent="."]
 visible = false

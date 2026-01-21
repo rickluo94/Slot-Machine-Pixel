@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cje0d2nymko3p"]
+
+[ext_resource type="Script" uid="uid://dwqmeeku01y4j" path="res://scenes/PlayerCoin.gd" id="1_57ygs"]
+[ext_resource type="Texture2D" uid="uid://cd2odkpke1rak" path="res://sprites/coins/coins-1.png" id="1_je1xc"]
+[ext_resource type="Texture2D" uid="uid://tylhhjsbfe7w" path="res://sprites/coins/coins-2.png" id="2_rifrs"]
+[ext_resource type="Texture2D" uid="uid://di1nmn4aapy6n" path="res://sprites/coins/coins-3.png" id="3_57ygs"]
+
+[node name="PlayerCoin" type="Node2D"]
+script = ExtResource("1_57ygs")
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coins-1" type="Sprite2D" parent="Coins"]
+position = Vector2(1754.6, 565.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_je1xc")
+
+[node name="Coins-2" type="Sprite2D" parent="Coins"]
+position = Vector2(1754.6, 565.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_rifrs")
+
+[node name="Coins-3" type="Sprite2D" parent="Coins"]
+position = Vector2(1754.6, 565.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_57ygs")
