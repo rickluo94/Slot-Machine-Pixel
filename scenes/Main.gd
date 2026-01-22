@@ -24,11 +24,6 @@ func _on_Roll_button_down():
 		monster.play("laugh")
 		slot.stop()
 		spin_coin.play()
-	#if $Roll.text == "Roll":
-		#slot.start()
-		#$Roll.text = "Stop"
-	#else:
-		#slot.stop()
 	
 func _on_slot_machine_stopped():
 	monster.play("laugh")

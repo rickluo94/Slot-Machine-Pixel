@@ -107,7 +107,7 @@ func _play_hit_animation() -> void:
 	tween.parallel().tween_property(
 		self,
 		"scale",
-		Vector2.ONE * 2,
+		Vector2.ONE * 3,
 		0.12
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	
