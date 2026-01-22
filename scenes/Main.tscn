@@ -1,115 +1,77 @@
-[gd_scene load_steps=449 format=3 uid="uid://b6ys4jb1sh4qi"]
+[gd_scene load_steps=408 format=3 uid="uid://b6ys4jb1sh4qi"]
 
 [ext_resource type="Script" uid="uid://b1ya8l3kmc7t6" path="res://scenes/SlotMachine.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://d3lcufs5me42f" path="res://background/flat-design-poker-table-background/9999520.jpg" id="2_8vg3j"]
+[ext_resource type="Texture2D" uid="uid://bpwswmhpsrvn1" path="res://background/flat-design-poker-table-background/wood-table.png" id="2_goljy"]
 [ext_resource type="Script" uid="uid://d1e1e3qov0rd0" path="res://scenes/Main.gd" id="3"]
-[ext_resource type="Script" uid="uid://c8xb1l3valssx" path="res://scenes/CombatBoard.gd" id="3_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://gwrx6u58a478" path="res://spin/Monster/Laugh/frame_1.png" id="3_gfa0u"]
-[ext_resource type="Texture2D" uid="uid://c0yigtieqr56s" path="res://spin/Roulette/frame_1.png" id="3_q285r"]
-[ext_resource type="Texture2D" uid="uid://bipakyhlodo51" path="res://spin/Roulette/frame_2.png" id="4_6f7ce"]
 [ext_resource type="Texture2D" uid="uid://74uqrjashn8l" path="res://spin/Monster/Laugh/frame_2.png" id="4_kk6o1"]
-[ext_resource type="Texture2D" uid="uid://bijl2832spj5f" path="res://spin/Roulette/frame_3.png" id="5_ub7ot"]
 [ext_resource type="Texture2D" uid="uid://stmh48bycpk1" path="res://spin/Monster/Laugh/frame_3.png" id="5_yp1rm"]
 [ext_resource type="Texture2D" uid="uid://da55ghibno1uo" path="res://spin/Monster/Laugh/frame_4.png" id="6_1assc"]
-[ext_resource type="Texture2D" uid="uid://u6dj5fbnjhrj" path="res://spin/Roulette/frame_4.png" id="6_a0obj"]
 [ext_resource type="AudioStream" uid="uid://bw1h6epmut0nc" path="res://sound/coin_hop_carousel.mp3" id="6_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://c6wkv4g37yy5k" path="res://spin/Monster/Laugh/frame_5.png" id="7_1x16r"]
-[ext_resource type="Texture2D" uid="uid://c2pi0r1xpe38f" path="res://spin/Roulette/frame_5.png" id="7_4qy4n"]
 [ext_resource type="AudioStream" uid="uid://bbathi01hekth" path="res://sound/win_sound/BIG_WIN_Well_played.mp3" id="7_q8u5g"]
-[ext_resource type="Texture2D" uid="uid://ctnmqdf6xqbky" path="res://spin/Roulette/frame_6.png" id="8_a65tq"]
 [ext_resource type="Texture2D" uid="uid://dh7qiwtbte0bb" path="res://spin/Monster/Laugh/frame_6.png" id="8_fkco6"]
 [ext_resource type="AudioStream" uid="uid://bk5ywt1tvrcjo" path="res://sound/win_sound/JACKPOT_All_in.mp3" id="8_lhr70"]
 [ext_resource type="Texture2D" uid="uid://uixanh2yr7hp" path="res://spin/Monster/Laugh/frame_7.png" id="9_742y3"]
-[ext_resource type="Texture2D" uid="uid://lyuyvqk5kehw" path="res://spin/Roulette/frame_7.png" id="9_joxh1"]
 [ext_resource type="AudioStream" uid="uid://hbb11bs5vr81" path="res://sound/win_sound/MEGA_WIN_Destiny.mp3" id="9_wp0k4"]
-[ext_resource type="Texture2D" uid="uid://r6lr1eko7tm4" path="res://spin/Roulette/frame_8.png" id="10_2gnaf"]
 [ext_resource type="Texture2D" uid="uid://dbnaygbtmoehw" path="res://win/trump_point/frame_0095.png" id="10_4bbev"]
 [ext_resource type="Texture2D" uid="uid://cext6f0vdy5pd" path="res://spin/Monster/Laugh/frame_8.png" id="10_t2ten"]
-[ext_resource type="Texture2D" uid="uid://1jvlkkw1tpgj" path="res://spin/Roulette/frame_9.png" id="11_ayea4"]
 [ext_resource type="Texture2D" uid="uid://cmbq44dt6r0be" path="res://win/trump_point/frame_0096.png" id="11_euk7l"]
 [ext_resource type="Texture2D" uid="uid://127dlco7gsx6" path="res://spin/Monster/Laugh/frame_9.png" id="11_yxgdv"]
-[ext_resource type="Texture2D" uid="uid://cmg881dcrysur" path="res://spin/Roulette/frame_10.png" id="12_7c02d"]
 [ext_resource type="Texture2D" uid="uid://df6abk76sksph" path="res://win/trump_point/frame_0097.png" id="12_mpw2q"]
 [ext_resource type="Texture2D" uid="uid://bxnxq53cfrhe" path="res://spin/Monster/Laugh/frame_10.png" id="12_nikaa"]
 [ext_resource type="Texture2D" uid="uid://d3q4f08hv1uu8" path="res://spin/Monster/Laugh/frame_11.png" id="13_ajd5x"]
 [ext_resource type="Texture2D" uid="uid://b43clynof1hnp" path="res://win/trump_point/frame_0098.png" id="13_std7w"]
-[ext_resource type="Texture2D" uid="uid://d0qff6tf633cp" path="res://spin/Roulette/frame_11.png" id="13_xh7rl"]
 [ext_resource type="Texture2D" uid="uid://ngvnmjtbodjd" path="res://win/trump_point/frame_0099.png" id="14_bfh1w"]
-[ext_resource type="Texture2D" uid="uid://bv3d0vc4nfuup" path="res://spin/Roulette/frame_12.png" id="14_cp2ao"]
 [ext_resource type="Texture2D" uid="uid://docfmu2a57gsl" path="res://spin/Monster/Laugh/frame_12.png" id="14_wjhi6"]
 [ext_resource type="Texture2D" uid="uid://c8j5mb1gqjrj8" path="res://spin/Monster/Laugh/frame_13.png" id="15_6pc17"]
 [ext_resource type="Texture2D" uid="uid://hvr6jpe1qji5" path="res://win/trump_point/frame_0100.png" id="15_8vg3j"]
-[ext_resource type="Texture2D" uid="uid://de8v45uy8l2yq" path="res://spin/Roulette/frame_13.png" id="15_e0bat"]
 [ext_resource type="Texture2D" uid="uid://bfankkkbhmhk" path="res://spin/Monster/Laugh/frame_14.png" id="16_etfid"]
-[ext_resource type="Texture2D" uid="uid://cvu7jn4sn4vxc" path="res://spin/Roulette/frame_14.png" id="16_ph1im"]
 [ext_resource type="Texture2D" uid="uid://dy3vpaearc2eo" path="res://win/trump_point/frame_0101.png" id="16_x8qvp"]
-[ext_resource type="Texture2D" uid="uid://cq6bd4quaipc3" path="res://spin/Roulette/frame_15.png" id="17_7qgsf"]
 [ext_resource type="Texture2D" uid="uid://bhoc8vwn4hq6q" path="res://win/trump_point/frame_0102.png" id="17_qp8ff"]
 [ext_resource type="Texture2D" uid="uid://cngwc67d0qv2" path="res://spin/Monster/Laugh/frame_15.png" id="17_tnyg5"]
 [ext_resource type="Texture2D" uid="uid://bj7jthy4r0fhu" path="res://spin/Monster/Laugh/frame_16.png" id="18_aksex"]
-[ext_resource type="Texture2D" uid="uid://bb4o211hr2fc4" path="res://spin/Roulette/frame_16.png" id="18_dqcp5"]
 [ext_resource type="Texture2D" uid="uid://dpu4i42460j5m" path="res://win/trump_point/frame_0103.png" id="18_ri8he"]
-[ext_resource type="Texture2D" uid="uid://bjifahfplqi0l" path="res://spin/Roulette/frame_17.png" id="19_0fxg1"]
 [ext_resource type="Texture2D" uid="uid://ctcssigw16wn5" path="res://win/trump_point/frame_0104.png" id="19_4ekdp"]
 [ext_resource type="Texture2D" uid="uid://8l75opn13vl3" path="res://spin/Monster/Laugh/frame_17.png" id="19_g0tui"]
 [ext_resource type="Texture2D" uid="uid://dw4y1ehslyxur" path="res://spin/Monster/Laugh/frame_18.png" id="20_goljy"]
-[ext_resource type="Texture2D" uid="uid://bp5buc7v0fvm1" path="res://spin/Roulette/frame_18.png" id="20_r0yxi"]
 [ext_resource type="Texture2D" uid="uid://cfywmf2v16fgv" path="res://win/trump_point/frame_0105.png" id="20_y7a8c"]
 [ext_resource type="Texture2D" uid="uid://ft6yyfcd14ee" path="res://win/trump_point/frame_0106.png" id="21_dbbpe"]
 [ext_resource type="Texture2D" uid="uid://cprog7gitg1ue" path="res://spin/Monster/Laugh/frame_19.png" id="21_nm5ah"]
-[ext_resource type="Texture2D" uid="uid://cok83yn15nlii" path="res://spin/Roulette/frame_19.png" id="21_w5bfd"]
 [ext_resource type="Texture2D" uid="uid://bcsqhhuq4aebc" path="res://spin/Monster/Laugh/frame_20.png" id="22_a7ruj"]
 [ext_resource type="Texture2D" uid="uid://3aswxga3br16" path="res://win/trump_point/frame_0107.png" id="22_fv5rl"]
-[ext_resource type="Texture2D" uid="uid://b7bai76abhkth" path="res://spin/Roulette/frame_20.png" id="22_jouxp"]
 [ext_resource type="Texture2D" uid="uid://crn8edb58l3c2" path="res://win/trump_point/frame_0108.png" id="23_6iugv"]
-[ext_resource type="Texture2D" uid="uid://bw0iguqqvcemc" path="res://spin/Roulette/frame_21.png" id="23_nt0jg"]
 [ext_resource type="Texture2D" uid="uid://c4fukj50iks5l" path="res://spin/Monster/Laugh/frame_21.png" id="23_tyill"]
 [ext_resource type="Texture2D" uid="uid://bh6obyjdoeaa" path="res://spin/Monster/Laugh/frame_22.png" id="24_0yfoy"]
 [ext_resource type="Texture2D" uid="uid://b8430wico4wbo" path="res://win/trump_point/frame_0109.png" id="24_dvucr"]
-[ext_resource type="Texture2D" uid="uid://bbac67i8j5eg4" path="res://spin/Roulette/frame_22.png" id="24_j70sp"]
 [ext_resource type="Texture2D" uid="uid://bh5ovpef6t1f1" path="res://spin/Monster/Laugh/frame_23.png" id="25_dscgc"]
-[ext_resource type="Texture2D" uid="uid://5pm7oofi36xc" path="res://spin/Roulette/frame_23.png" id="25_h0t75"]
 [ext_resource type="Texture2D" uid="uid://djv0nrnqjjbxy" path="res://win/trump_point/frame_0110.png" id="25_suj75"]
 [ext_resource type="Texture2D" uid="uid://c4rnvj5l80i6k" path="res://win/trump_point/frame_0111.png" id="26_1odw6"]
-[ext_resource type="Texture2D" uid="uid://bwr0mhrqo8vl" path="res://spin/Roulette/frame_24.png" id="26_1v2hd"]
 [ext_resource type="Texture2D" uid="uid://ccpr8xr057okx" path="res://spin/Monster/Laugh/frame_24.png" id="26_px8qy"]
-[ext_resource type="Texture2D" uid="uid://c3f5hgyyj6tkg" path="res://spin/Roulette/frame_25.png" id="27_avhks"]
 [ext_resource type="Texture2D" uid="uid://b34xpjagwu27f" path="res://spin/Monster/Laugh/frame_25.png" id="27_f4rsv"]
 [ext_resource type="Texture2D" uid="uid://cbwi0nhrsjf18" path="res://win/trump_point/frame_0112.png" id="27_telb6"]
 [ext_resource type="Texture2D" uid="uid://bt16lovgkl7sy" path="res://win/trump_point/frame_0113.png" id="28_iarti"]
-[ext_resource type="Texture2D" uid="uid://culfjo7xr0xs8" path="res://spin/Roulette/frame_26.png" id="28_jn17p"]
 [ext_resource type="Texture2D" uid="uid://dmbl3isnlcwy3" path="res://spin/Monster/Laugh/frame_26.png" id="28_v17so"]
 [ext_resource type="Texture2D" uid="uid://dxfsa3oocj01x" path="res://spin/Monster/Laugh/frame_27.png" id="29_jnpch"]
-[ext_resource type="Texture2D" uid="uid://3bi7w2qejcfu" path="res://spin/Roulette/frame_27.png" id="29_p6rc4"]
 [ext_resource type="Texture2D" uid="uid://ds8mvwranphnl" path="res://win/trump_point/frame_0114.png" id="29_vao6e"]
 [ext_resource type="Texture2D" uid="uid://6uaa1t2ivym1" path="res://win/trump_point/frame_0115.png" id="30_4e3io"]
-[ext_resource type="Texture2D" uid="uid://ccr6ye2hoxo4j" path="res://spin/Roulette/frame_28.png" id="30_exbix"]
 [ext_resource type="Texture2D" uid="uid://dykofgv7qv6nq" path="res://spin/Monster/Laugh/frame_28.png" id="30_v0ctk"]
 [ext_resource type="Texture2D" uid="uid://ca8dv7vomikwd" path="res://win/trump_point/frame_0116.png" id="31_2nrm4"]
 [ext_resource type="Texture2D" uid="uid://c22fcqqve2imh" path="res://spin/Monster/Laugh/frame_29.png" id="31_7i7ne"]
-[ext_resource type="Texture2D" uid="uid://v31uj22abykx" path="res://spin/Roulette/frame_29.png" id="31_rgee8"]
-[ext_resource type="Texture2D" uid="uid://dhqlq4p2bd064" path="res://spin/Roulette/frame_30.png" id="32_6xar0"]
 [ext_resource type="Texture2D" uid="uid://dui31dcurl4vv" path="res://win/trump_point/frame_0117.png" id="32_dvcyk"]
 [ext_resource type="Texture2D" uid="uid://dy816kabtoe3v" path="res://spin/Monster/Laugh/frame_30.png" id="32_rxh0y"]
 [ext_resource type="Texture2D" uid="uid://bvk1w2yko074r" path="res://spin/Monster/Laugh/frame_31.png" id="33_5l2gp"]
 [ext_resource type="Texture2D" uid="uid://dk63y33riyu4f" path="res://win/trump_point/frame_0118.png" id="33_ln1sq"]
-[ext_resource type="Texture2D" uid="uid://by3trtea8ralj" path="res://spin/Roulette/frame_31.png" id="33_ucd8w"]
 [ext_resource type="Texture2D" uid="uid://dfc2p11bdisi0" path="res://win/trump_point/frame_0119.png" id="34_1dhxd"]
-[ext_resource type="Texture2D" uid="uid://dnd21f7hjk58q" path="res://spin/Roulette/frame_32.png" id="34_22r11"]
 [ext_resource type="Texture2D" uid="uid://nggdaghbivbq" path="res://spin/Monster/Laugh/frame_32.png" id="34_c8egt"]
 [ext_resource type="Texture2D" uid="uid://fmcmqmc66cp1" path="res://win/trump_point/frame_0120.png" id="35_3vu54"]
 [ext_resource type="Texture2D" uid="uid://du38b23pyqcje" path="res://spin/Monster/Laugh/frame_33.png" id="35_ejhxa"]
-[ext_resource type="Texture2D" uid="uid://cwnucqgbv5bd4" path="res://spin/Roulette/frame_33.png" id="35_l6c1n"]
 [ext_resource type="Texture2D" uid="uid://d38b7xaas6jg0" path="res://win/trump_point/frame_0121.png" id="36_dmggb"]
 [ext_resource type="Texture2D" uid="uid://bncx3t8acks46" path="res://spin/Monster/Laugh/frame_34.png" id="36_mq45j"]
-[ext_resource type="Texture2D" uid="uid://bdftu10s5ftaf" path="res://spin/Roulette/frame_34.png" id="36_op3oq"]
-[ext_resource type="Texture2D" uid="uid://y80nac3hijk" path="res://spin/Roulette/frame_35.png" id="37_3cxck"]
 [ext_resource type="Texture2D" uid="uid://6xmsk76qpmkk" path="res://win/trump_point/frame_0122.png" id="37_7jopc"]
 [ext_resource type="Texture2D" uid="uid://oc8uucfdtlsc" path="res://spin/Monster/Laugh/frame_35.png" id="37_qvjio"]
-[ext_resource type="Texture2D" uid="uid://dojusifubdxa5" path="res://spin/Roulette/frame_36.png" id="38_cil13"]
 [ext_resource type="Texture2D" uid="uid://baf3cjrb0io6r" path="res://spin/Monster/Laugh/frame_36.png" id="38_mmx81"]
 [ext_resource type="Texture2D" uid="uid://cb72tra8hri6m" path="res://win/trump_point/frame_0123.png" id="38_ttosu"]
-[ext_resource type="Texture2D" uid="uid://b07h1xh0m42je" path="res://spin/Roulette/frame_37.png" id="39_16ypl"]
 [ext_resource type="Texture2D" uid="uid://bqw21cuxwhuqr" path="res://spin/Monster/Laugh/frame_37.png" id="39_r2hkq"]
 [ext_resource type="Texture2D" uid="uid://bk6qov6gyaubk" path="res://win/trump_point/frame_0124.png" id="39_u1tu3"]
 [ext_resource type="Texture2D" uid="uid://451kakwhr7sb" path="res://spin/Monster/Laugh/frame_38.png" id="40_01kqc"]
@@ -438,12 +400,6 @@
 [ext_resource type="Texture2D" uid="uid://ri6h1p44gk32" path="res://win/big_win/big_win_coin.png" id="252_euk7l"]
 [ext_resource type="AudioStream" uid="uid://dv66hrljgpkhi" path="res://sound/big-jackpot-coins.wav" id="253_mpw2q"]
 
-[sub_resource type="Gradient" id="1"]
-
-[sub_resource type="GradientTexture1D" id="2"]
-gradient = SubResource("1")
-width = 1920
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q285r"]
 draw_center = false
 corner_radius_top_left = 50
@@ -458,125 +414,6 @@ corner_radius_bottom_left = 50
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a0obj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q285r"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6svcp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_q285r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_6f7ce")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_ub7ot")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_a0obj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_4qy4n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_a65tq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_joxh1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_2gnaf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_ayea4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_7c02d")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_xh7rl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_cp2ao")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_e0bat")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_ph1im")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_7qgsf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_dqcp5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_0fxg1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_r0yxi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_w5bfd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_jouxp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("23_nt0jg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("24_j70sp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("25_h0t75")
-}, {
-"duration": 1.0,
-"texture": ExtResource("26_1v2hd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_avhks")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_jn17p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_p6rc4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("30_exbix")
-}, {
-"duration": 1.0,
-"texture": ExtResource("31_rgee8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("32_6xar0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("33_ucd8w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("34_22r11")
-}, {
-"duration": 1.0,
-"texture": ExtResource("35_l6c1n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("36_op3oq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("37_3cxck")
-}, {
-"duration": 1.0,
-"texture": ExtResource("38_cil13")
-}, {
-"duration": 1.0,
-"texture": ExtResource("39_16ypl")
-}],
-"loop": false,
-"name": &"default",
-"speed": 8.0
-}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2ten"]
 animations = [{
@@ -730,7 +567,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 48.0
+"speed": 60.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hohh6"]
@@ -1772,13 +1609,12 @@ script = ExtResource("3")
 modulate = Color(0.639216, 0.25098, 0.239216, 1)
 light_mask = 257
 scale = Vector2(1, 1080)
-texture = SubResource("2")
 centered = false
 
 [node name="TableBackground" type="Sprite2D" parent="."]
-position = Vector2(960, 631.99994)
-scale = Vector2(0.648, 0.6480001)
-texture = ExtResource("2_8vg3j")
+position = Vector2(960, 1056.0001)
+scale = Vector2(1.2522784, 1.2522788)
+texture = ExtResource("2_goljy")
 
 [node name="Roll" type="Button" parent="."]
 offset_left = 1561.0
@@ -1794,22 +1630,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_q285r")
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="spin_roulette" type="AnimatedSprite2D" parent="Roll"]
-visible = false
-position = Vector2(50.739685, 50.216614)
-scale = Vector2(0.32890436, 0.32890436)
-sprite_frames = SubResource("SpriteFrames_6svcp")
-
 [node name="spin_coin" type="AnimatedSprite2D" parent="Roll"]
-position = Vector2(51.278625, 50.755512)
-scale = Vector2(0.22661933, 0.22661933)
+position = Vector2(27.739582, 74.294556)
+scale = Vector2(0.14815585, 0.14815585)
 sprite_frames = SubResource("SpriteFrames_t2ten")
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 offset_left = 300.0
-offset_top = 127.0
+offset_top = 168.0
 offset_right = 1300.0
-offset_bottom = 927.0
+offset_bottom = 968.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Viewport" type="SubViewport" parent="ViewportContainer"]
@@ -1829,20 +1659,6 @@ animation = &"draw"
 autoplay = "laugh"
 
 [node name="PlayerCoin" parent="." instance=ExtResource("184_sipgg")]
-
-[node name="CombatViewportContainer" type="SubViewportContainer" parent="."]
-visible = false
-offset_top = -2.0
-offset_right = 1152.0
-offset_bottom = 183.0
-
-[node name="Viewport" type="SubViewport" parent="CombatViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1152, 185)
-render_target_update_mode = 0
-
-[node name="CombatBoard" type="Node2D" parent="CombatViewportContainer/Viewport"]
-script = ExtResource("3_0bbpv")
 
 [node name="turmp_point" type="AnimatedSprite2D" parent="."]
 visible = false

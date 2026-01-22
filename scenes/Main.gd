@@ -2,15 +2,13 @@ extends Node2D
 class_name Main
 
 @onready var slot = $ViewportContainer/Viewport/SlotMachine
-
-@onready var spin_roulette = $Roll/spin_roulette
 @onready var spin_coin = $Roll/spin_coin
 @onready var monster = $Monster
 @onready var player_coin = $PlayerCoin
 
 func _ready():
 	slot.connect("stopped", Callable(self, "_on_slot_machine_stopped"))
-	player_coin.show_coin(PlayerCoin.CoinLevel.MEDIUM)
+	player_coin.show_coin(PlayerCoin.CoinLevel.BIG)
 	
 func monster_draw():
 	monster.play("draw")

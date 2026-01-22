@@ -44,7 +44,7 @@ func play(value: int) -> void:
 		
 	_layout_slots_centered(count)
 	_play_hit_animation()
-	emit_signal("request_coin_animation", PlayerCoin.WinTier.MEDIUM_WIN)
+	emit_signal("request_coin_animation", PlayerCoin.WinTier.BIG_WIN)
 	#_play_crit_shake()
 	
 # -------------------------------------------------

@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://0kxi2ulggkir"
-path="res://.godot/imported/frame_35.png-04ff1b95c83abff2cdedf5f7614c6041.ctex"
+path.bptc="res://.godot/imported/frame_35.png-04ff1b95c83abff2cdedf5f7614c6041.bptc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://spin/coin/frame_35.png"
-dest_files=["res://.godot/imported/frame_35.png-04ff1b95c83abff2cdedf5f7614c6041.ctex"]
+dest_files=["res://.godot/imported/frame_35.png-04ff1b95c83abff2cdedf5f7614c6041.bptc.ctex"]
 
 [params]
 
-compress/mode=0
-compress/high_quality=false
+compress/mode=2
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
@@ -32,7 +33,7 @@ process/channel_remap/green=1
 process/channel_remap/blue=2
 process/channel_remap/alpha=3
 process/fix_alpha_border=true
-process/premult_alpha=false
+process/premult_alpha=true
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

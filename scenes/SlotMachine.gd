@@ -9,8 +9,11 @@ const ActionEffect := preload("res://scenes/ActionEffect.tscn")
 
 var player:Node2D
 var actionEffect:Node2D
+
 # 儲存 SlotTile 的 SPIN_UP 動畫移動距離
 const SPIN_UP_DISTANCE = 100.0
+
+
 signal stopped
 
 # 材質陣列
@@ -137,6 +140,9 @@ var SYMBOL_SUIT_WEIGHT := {}
 
 # 贏分
 var WIN_POINT := 0
+
+# BOSS 金幣數量
+var MONSTER_COINS :int = 100
 
 # 聲音
 @onready var spin_sound = $"../../../SpinSound"
