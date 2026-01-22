@@ -638,14 +638,15 @@ func count_stopped_show_damage(hit_position:Vector2):
 		_total_stop = 0
 		
 func show_damage_number(hit_position: Vector2) -> void:
+	var rnumber = calculate_score(wins, wins_suit)
+	if (rnumber <= 0):
+		return
 	var dn := preload("res://scenes/DamageNumber.tscn").instantiate()
 	dn.connect("request_coin_animation", Callable(self, "_on_request_coin_animation"))
 	
 	var main := get_tree().current_scene
 	main.add_child(dn)
 	dn.global_position = hit_position
-	
-	var rnumber = calculate_score(wins, wins_suit)
 	dn.play(rnumber)
 	
 func _on_request_coin_animation(win_tier):
