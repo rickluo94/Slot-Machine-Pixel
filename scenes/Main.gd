@@ -6,10 +6,12 @@ class_name Main
 @onready var spin_roulette = $Roll/spin_roulette
 @onready var spin_coin = $Roll/spin_coin
 @onready var monster = $Monster
+@onready var player_coin = $PlayerCoin
 
 func _ready():
 	slot.connect("stopped", Callable(self, "_on_slot_machine_stopped"))
-
+	player_coin.show_coin(PlayerCoin.CoinLevel.MEDIUM)
+	
 func monster_draw():
 	monster.play("draw")
 	await get_tree().create_timer(1.6).timeout
@@ -33,4 +35,4 @@ func _on_Roll_button_down():
 func _on_slot_machine_stopped():
 	monster.play("laugh")
 	spin_coin.stop()
-	slot.count_stopped_show_damage(monster.position * 0.9)
+	slot.count_stopped_show_damage(Vector2(monster.position.x * 1.07,monster.position.y * 1.6))

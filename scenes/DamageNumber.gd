@@ -1,6 +1,8 @@
 extends Node2D
 class_name DamageNumber
 
+signal request_coin_animation(win_tier)
+
 # 數字間距
 @export var digit_spacing: float = 20.0
 # 漂浮高度
@@ -42,6 +44,7 @@ func play(value: int) -> void:
 		
 	_layout_slots_centered(count)
 	_play_hit_animation()
+	emit_signal("request_coin_animation", PlayerCoin.WinTier.MEDIUM_WIN)
 	#_play_crit_shake()
 	
 # -------------------------------------------------

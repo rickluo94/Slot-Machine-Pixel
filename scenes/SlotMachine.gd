@@ -4,7 +4,9 @@ class_name SlotMachine
 const SlotTile := preload("res://scenes/SlotTile.tscn")
 const Player := preload("res://scenes/Player.tscn")
 const ActionEffect := preload("res://scenes/ActionEffect.tscn")
-	
+
+@onready var player_coin := $"../../../PlayerCoin"
+
 var player:Node2D
 var actionEffect:Node2D
 # 儲存 SlotTile 的 SPIN_UP 動畫移動距離
@@ -637,6 +639,7 @@ func count_stopped_show_damage(hit_position:Vector2):
 		
 func show_damage_number(hit_position: Vector2) -> void:
 	var dn := preload("res://scenes/DamageNumber.tscn").instantiate()
+	dn.connect("request_coin_animation", Callable(self, "_on_request_coin_animation"))
 	
 	var main := get_tree().current_scene
 	main.add_child(dn)
@@ -644,3 +647,6 @@ func show_damage_number(hit_position: Vector2) -> void:
 	
 	var rnumber = calculate_score(wins, wins_suit)
 	dn.play(rnumber)
+	
+func _on_request_coin_animation(win_tier):
+	player_coin.play_coin_animation(win_tier)

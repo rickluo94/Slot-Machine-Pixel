@@ -1,14 +1,242 @@
-[gd_scene load_steps=5 format=3 uid="uid://cje0d2nymko3p"]
+[gd_scene load_steps=10 format=3 uid="uid://cje0d2nymko3p"]
 
 [ext_resource type="Script" uid="uid://dwqmeeku01y4j" path="res://scenes/PlayerCoin.gd" id="1_57ygs"]
 [ext_resource type="Texture2D" uid="uid://cd2odkpke1rak" path="res://sprites/coins/coins-1.png" id="1_je1xc"]
 [ext_resource type="Texture2D" uid="uid://tylhhjsbfe7w" path="res://sprites/coins/coins-2.png" id="2_rifrs"]
 [ext_resource type="Texture2D" uid="uid://di1nmn4aapy6n" path="res://sprites/coins/coins-3.png" id="3_57ygs"]
 
+[sub_resource type="Animation" id="Animation_e62x8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoinsEffect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinsEffect/Coins-1:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoinsEffect/Coins-2:self_modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CoinsEffect/Coins-3:self_modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CoinsEffect/Coins-1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CoinsEffect/Coins-2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CoinsEffect/Coins-3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_57ygs"]
+resource_name = "COINS_SMALL_WIN"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoinsEffect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -130, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinsEffect/Coins-1:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.083333336, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoinsEffect/Coins-1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_03xqp"]
+resource_name = "COINS_BIG_WIN"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoinsEffect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -130, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinsEffect/Coins-3:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0, 0, -0.17222223, 0.13333334, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoinsEffect/Coins-3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_e70im"]
+resource_name = "COINS_MEDIUM_WIN"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CoinsEffect:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -130, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CoinsEffect/Coins-2:self_modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0, 0, -0.16666667, 0.083333336, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CoinsEffect/Coins-2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e70im"]
+_data = {
+&"COINS_BIG_WIN": SubResource("Animation_03xqp"),
+&"COINS_MEDIUM_WIN": SubResource("Animation_e70im"),
+&"COINS_SMALL_WIN": SubResource("Animation_57ygs"),
+&"RESET": SubResource("Animation_e62x8")
+}
+
 [node name="PlayerCoin" type="Node2D"]
 script = ExtResource("1_57ygs")
 
+[node name="CoinsEffect" type="Node2D" parent="."]
+self_modulate = Color(1, 1, 1, 100)
+
+[node name="Coins-1" type="Sprite2D" parent="CoinsEffect"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1754.6, 565.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_je1xc")
+
+[node name="Coins-2" type="Sprite2D" parent="CoinsEffect"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1754.6, 565.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_rifrs")
+
+[node name="Coins-3" type="Sprite2D" parent="CoinsEffect"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1754.6, 565.4)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_57ygs")
+
 [node name="Coins" type="Node2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 100)
 
 [node name="Coins-1" type="Sprite2D" parent="Coins"]
 position = Vector2(1754.6, 565.4)
@@ -24,3 +252,8 @@ texture = ExtResource("2_rifrs")
 position = Vector2(1754.6, 565.4)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_57ygs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e70im")
+}
