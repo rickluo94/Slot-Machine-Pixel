@@ -1641,10 +1641,10 @@ scale = Vector2(0.14815585, 0.14815585)
 sprite_frames = SubResource("SpriteFrames_t2ten")
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 296.00003
-offset_top = 96.0
-offset_right = 1296.0
-offset_bottom = 896.0
+offset_left = 181.00002
+offset_top = 136.0
+offset_right = 1181.0
+offset_bottom = 936.0
 scale = Vector2(0.9, 0.9)
 metadata/_edit_use_anchors_ = true
 
