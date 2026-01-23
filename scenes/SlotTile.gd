@@ -25,6 +25,9 @@ func show_text():
 func hide_text():
 	_label.visible = false
 	
+func set_index(value: int) -> void:
+	$Sprite.set_z_index(value)
+	
 func set_texture(tex):
 	$Sprite.texture = tex
 	set_size(_size)
