@@ -346,7 +346,7 @@ func _on_tile_moved(tile: SlotTile, _nodePath) -> void:
 				tile.reset_shader_empty()
 			tile.set_texture(pictures[result.tiles[reel][current_idx]])
 			# 停轉時設定層級避免遮擋
-			tile.set_index(reel)
+			tile.set_index(current_idx)
 		else:
 			tile.set_texture(_randomTexture())
 				
