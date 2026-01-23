@@ -106,7 +106,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Clubs:texture")
+tracks/1/path = NodePath("Sprite/Clubs:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -118,7 +118,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Clubs:self_modulate:a")
+tracks/2/path = NodePath("Sprite/Clubs:self_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -144,7 +144,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Diamonds:texture")
+tracks/1/path = NodePath("Sprite/Diamonds:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -156,7 +156,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Diamonds:self_modulate:a")
+tracks/2/path = NodePath("Sprite/Diamonds:self_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -182,7 +182,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hearts:texture")
+tracks/1/path = NodePath("Sprite/Hearts:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -194,7 +194,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hearts:self_modulate:a")
+tracks/2/path = NodePath("Sprite/Hearts:self_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -220,7 +220,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Spades:texture")
+tracks/1/path = NodePath("Sprite/Spades:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -232,7 +232,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Spades:self_modulate:a")
+tracks/2/path = NodePath("Sprite/Spades:self_modulate:a")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -280,7 +280,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Spades:texture")
+tracks/3/path = NodePath("Sprite/Spades:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -292,7 +292,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Spades:self_modulate:a")
+tracks/4/path = NodePath("Sprite/Spades:self_modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -303,7 +303,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Hearts:texture")
+tracks/5/path = NodePath("Sprite/Hearts:texture")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -315,7 +315,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Hearts:self_modulate:a")
+tracks/6/path = NodePath("Sprite/Hearts:self_modulate:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -326,7 +326,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Diamonds:texture")
+tracks/7/path = NodePath("Sprite/Diamonds:texture")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -338,7 +338,7 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Diamonds:self_modulate:a")
+tracks/8/path = NodePath("Sprite/Diamonds:self_modulate:a")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -349,7 +349,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Clubs:texture")
+tracks/9/path = NodePath("Sprite/Clubs:texture")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -361,7 +361,7 @@ tracks/9/keys = {
 tracks/10/type = "bezier"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Clubs:self_modulate:a")
+tracks/10/path = NodePath("Sprite/Clubs:self_modulate:a")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -433,31 +433,31 @@ theme_override_font_sizes/font_size = 8
 text = "Text"
 vertical_alignment = 2
 
+[node name="Spades" type="Sprite2D" parent="Sprite"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(32.59259, 32.59259)
+scale = Vector2(0.078577094, 0.078577094)
+texture = ExtResource("3_u2cty")
+
+[node name="Diamonds" type="Sprite2D" parent="Sprite"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(29.629631, 32.592594)
+scale = Vector2(0.072473586, 0.07247359)
+texture = ExtResource("5_2irgj")
+
+[node name="Hearts" type="Sprite2D" parent="Sprite"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(32.59259, 32.59259)
+scale = Vector2(0.072722256, 0.072722256)
+texture = ExtResource("6_kkf0t")
+
+[node name="Clubs" type="Sprite2D" parent="Sprite"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(32.592598, 32.592598)
+scale = Vector2(0.07259259, 0.07259259)
+texture = ExtResource("7_2baj3")
+
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_xxgdn")
 }
-
-[node name="Spades" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-position = Vector2(89, 92)
-scale = Vector2(0.21215816, 0.21215816)
-texture = ExtResource("3_u2cty")
-
-[node name="Hearts" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-position = Vector2(88.99999, 97)
-scale = Vector2(0.1963501, 0.1963501)
-texture = ExtResource("6_kkf0t")
-
-[node name="Diamonds" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-position = Vector2(88, 94.999985)
-scale = Vector2(0.1956787, 0.19567871)
-texture = ExtResource("5_2irgj")
-
-[node name="Clubs" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-position = Vector2(88.09374, 79.906265)
-scale = Vector2(0.17010498, 0.17010498)
-texture = ExtResource("7_2baj3")

@@ -90,7 +90,7 @@ signal stopped
 @export_range(0,2) var reel_delay :float = 0.3
 
 # 定義安全邊界
-@export var grid_padding := Vector2(64, 64)
+@export var grid_padding := Vector2(128, 128)
 
 # 依照視窗大小調整瓦片尺寸
 @onready var viewport_size := get_viewport_rect().size
