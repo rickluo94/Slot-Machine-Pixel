@@ -1,7 +1,7 @@
 [gd_scene load_steps=408 format=3 uid="uid://b6ys4jb1sh4qi"]
 
 [ext_resource type="Script" uid="uid://b1ya8l3kmc7t6" path="res://scenes/SlotMachine.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bpwswmhpsrvn1" path="res://background/flat-design-poker-table-background/wood-table.png" id="2_goljy"]
+[ext_resource type="Texture2D" uid="uid://cac1xkgltvr7d" path="res://background/flat-design-poker-table-background/wood-table-y.png" id="2_goljy"]
 [ext_resource type="Script" uid="uid://d1e1e3qov0rd0" path="res://scenes/Main.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://gwrx6u58a478" path="res://spin/Monster/Laugh/frame_1.png" id="3_gfa0u"]
 [ext_resource type="Texture2D" uid="uid://74uqrjashn8l" path="res://spin/Monster/Laugh/frame_2.png" id="4_kk6o1"]
@@ -1611,16 +1611,14 @@ light_mask = 257
 scale = Vector2(1, 1080)
 centered = false
 
-[node name="WoodTableMin" type="Sprite2D" parent="."]
-position = Vector2(1597.2308, 852)
-rotation = 1.5707964
-scale = Vector2(0.6876609, 0.73783225)
+[node name="WoodTableMinRight" type="Sprite2D" parent="."]
+position = Vector2(1590.6566, 862.58075)
+scale = Vector2(0.70050114, 0.7516093)
 texture = ExtResource("2_goljy")
 
 [node name="WoodTable" type="Sprite2D" parent="."]
-position = Vector2(735.1249, 814.6873)
-rotation = 1.5707964
-scale = Vector2(1.0607905, 1.0607905)
+position = Vector2(639.1248, 958.68744)
+scale = Vector2(1.2482907, 1.2482907)
 texture = ExtResource("2_goljy")
 
 [node name="Roll" type="Button" parent="."]
@@ -1643,10 +1641,10 @@ scale = Vector2(0.14815585, 0.14815585)
 sprite_frames = SubResource("SpriteFrames_t2ten")
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 288.0
-offset_top = 64.0
-offset_right = 1288.0
-offset_bottom = 864.0
+offset_left = 296.00003
+offset_top = 96.0
+offset_right = 1296.0
+offset_bottom = 896.0
 scale = Vector2(0.9, 0.9)
 metadata/_edit_use_anchors_ = true
 
