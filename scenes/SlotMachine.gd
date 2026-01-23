@@ -89,9 +89,13 @@ signal stopped
 # 定義每個轉軸之間的啟動延遲時間
 @export_range(0,2) var reel_delay :float = 0.3
 
+# 定義安全邊界
+@export var grid_padding := Vector2(64, 64)
+
 # 依照視窗大小調整瓦片尺寸
-@onready var size := get_viewport_rect().size
-@onready var tile_size := size / Vector2(reels, tiles_per_reel)
+@onready var viewport_size := get_viewport_rect().size
+@onready var usable_size := viewport_size - grid_padding * 2
+@onready var tile_size := usable_size / Vector2(reels, tiles_per_reel)
 # 將速度正規化，使其不受瓦片數量影響而保持一致
 @onready var speed_norm := speed * tiles_per_reel
 # 在每個捲軸中增加瓦片在鏡頭外增加動畫流暢度
@@ -219,15 +223,17 @@ func _init_math():
 	}
 	
 func _init_tiles():
-	# 初始化瓦片格子
-	for col in reels:
+	for col in range(reels):
 		grid_pos.append([])
 		tiles_moved_per_reel.append(0)
 		for row in range(rows):
-		# 將額外瓦片放置在視窗上方與下方
-			grid_pos[col].append(Vector2(col, row-0.5*extra_tiles) * tile_size)
+			var pos := Vector2(
+				col,
+				row - 0.5 * extra_tiles
+			) * tile_size + grid_padding
+			grid_pos[col].append(pos)
 			_add_tile(col, row)
-
+			
 func _ready():
 	# BGM
 	bgm_sound.play()
